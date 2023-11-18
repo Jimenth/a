@@ -1022,53 +1022,54 @@ if Kingston.Parrying.Spamming.Enabled then
         end
     end)
     end
+
     ParryRemote.OnClientEvent:Connect(function(player)
-        if Kingston.HitSound["Enabled"] then
+        if Kingston.Misc.HitSound.Enabled then
             local sound = Instance.new("Sound")
     
-            if Kingston.HitSound.Sound == "Bameware" then
+            if Kingston.Misc.HitSound.Sound == "Bameware" then
                 sound.SoundId = "rbxassetid://3124331820"
-            elseif Kingston.HitSound.Sound == "Skeet" then
+            elseif Kingston.Misc.HitSound.Sound == "Skeet" then
                 sound.SoundId = "rbxassetid://4753603610"
-            elseif Kingston.HitSound.Sound == "Bonk" then
+            elseif Kingston.Misc.HitSound.Sound == "Bonk" then
                 sound.SoundId = "rbxassetid://3765689841"
-            elseif Kingston.HitSound.Sound == "Lazer Beam" then
+            elseif Kingston.Misc.HitSound.Sound == "Lazer Beam" then
                 sound.SoundId = "rbxassetid://130791043"
-            elseif Kingston.HitSound.Sound == "Windows XP Error" then
+            elseif Kingston.Misc.HitSound.Sound == "Windows XP Error" then
                 sound.SoundId = "rbxassetid://160715357"
-            elseif Kingston.HitSound.Sound == "TF2 Hitsound" then
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Hitsound" then
                 sound.SoundId = "rbxassetid://3455144981"
-            elseif Kingston.HitSound.Sound == "TF2 Critical" then
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Critical" then
                 sound.SoundId = "rbxassetid://296102734"
-            elseif Kingston.HitSound.Sound == "TF2 Bat" then
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Bat" then
                 sound.SoundId = "rbxassetid://3333907347"
-            elseif Kingston.HitSound.Sound == 'Bow Hit' then
+            elseif Kingston.Misc.HitSound.Sound == 'Bow Hit' then
                 sound.SoundId = "rbxassetid://1053296915"
-            elseif Kingston.HitSound.Sound == 'Bow' then
+            elseif Kingston.Misc.HitSound.Sound == 'Bow' then
                 sound.SoundId = "rbxassetid://3442683707"
-            elseif Kingston.HitSound.Sound == 'OSU' then
+            elseif Kingston.Misc.HitSound.Sound == 'OSU' then
                 sound.SoundId = "rbxassetid://7147454322"
-            elseif Kingston.HitSound.Sound == 'Minecraft Hit' then
+            elseif Kingston.Misc.HitSound.Sound == 'Minecraft Hit' then
                 sound.SoundId = "rbxassetid://4018616850"
-            elseif Kingston.HitSound.Sound == 'Steve' then
+            elseif Kingston.Misc.HitSound.Sound == 'Steve' then
                 sound.SoundId = "rbxassetid://5869422451"
-            elseif Kingston.HitSound.Sound == '1nn' then
+            elseif Kingston.Misc.HitSound.Sound == '1nn' then
                 sound.SoundId = "rbxassetid://7349055654"
-            elseif Kingston.HitSound.Sound == 'Rust' then
+            elseif Kingston.Misc.HitSound.Sound == 'Rust' then
                 sound.SoundId = "rbxassetid://3744371091"
-            elseif Kingston.HitSound.Sound == "TF2 Pan" then
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Pan" then
                 sound.SoundId = "rbxassetid://3431749479"
-            elseif Kingston.HitSound.Sound == "Neverlose" then
+            elseif Kingston.Misc.HitSound.Sound == "Neverlose" then
                 sound.SoundId = "rbxassetid://8679627751"
-            elseif Kingston.HitSound.Sound == "Mario" then
+            elseif Kingston.Misc.HitSound.Sound == "Mario" then
                 sound.SoundId = "rbxassetid://5709456554"
     
             end
     
             local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
             sound.Parent = humanoidRootPart or player.Character
-            sound.Volume = Kingston.HitSound.Volume
-            sound.Pitch = Kingston.HitSound.Pitch
+            sound.Volume = Kingston.Misc.HitSound.Volume
+            sound.Pitch = Kingston.Misc.HitSound.Pitch
             sound:Play()
         end
     end)
@@ -1725,45 +1726,45 @@ if Kingston["Misc"].Skybox.Enabled then
                 {
                     Name = "Hit Sound",
                     Options = {"Bameware", "Skeet", "Bonk", "Lazer Beam", "Windows XP Error", "TF2 Hitsound", "TF2 Critical", "TF2 Bat", "Bow Hit", "Bow", "OSU", "Minecraft Hit", "Steve", "1nn", "Rust", "TF2 Pan", "Neverlose", "Mario"},
-                    Default = Kingston.HitSound.Sound,
+                    Default = Kingston.Misc.HitSound.Sound,
                     Pointer = "skibidi",
                     callback = function(callback)
                         if callback == "Bameware" then
-                            Kingston.HitSound.Sound = "Bameware"
+                            Kingston.Misc.HitSound.Sound = "Bameware"
                         elseif callback == "Skeet" then
-                            Kingston.HitSound.Sound = "Skeet"
+                            Kingston.Misc.HitSound.Sound = "Skeet"
                         elseif callback == "Bonk" then
-                            Kingston.HitSound.Sound = "Bonk"
+                            Kingston.Misc.HitSound.Sound = "Bonk"
                         elseif callback == "Lazer Beam" then
-                            Kingston.HitSound.Sound = "Lazer Beam"
+                            Kingston.Misc.HitSound.Sound = "Lazer Beam"
                         elseif callback == "Windows XP Error" then
-                            Kingston.HitSound.Sound = "Windows XP Error"
+                            Kingston.Misc.HitSound.Sound = "Windows XP Error"
                         elseif callback == "TF2 Hitsound" then
-                            Kingston.HitSound.Sound = "TF2 Hitsound"
+                            Kingston.Misc.HitSound.Sound = "TF2 Hitsound"
                         elseif callback == "TF2 Critical" then
-                            Kingston.HitSound.Sound = "TF2 Critical"
+                            Kingston.Misc.HitSound.Sound = "TF2 Critical"
                         elseif callback == "TF2 Bat" then
-                            Kingston.HitSound.Sound = "TF2 Bat"
+                            Kingston.Misc.HitSound.Sound = "TF2 Bat"
                         elseif callback == "Bow Hit" then
-                            Kingston.HitSound.Sound = "Bow Hit"
+                            Kingston.Misc.HitSound.Sound = "Bow Hit"
                         elseif callback == "Bow" then
-                            Kingston.HitSound.Sound = "Bow"
+                            Kingston.Misc.HitSound.Sound = "Bow"
                         elseif callback == "OSU" then
-                            Kingston.HitSound.Sound = "OSU"
+                            Kingston.Misc.HitSound.Sound = "OSU"
                         elseif callback == "Minecraft Hit" then
-                            Kingston.HitSound.Sound = "Minecraft Hit"
+                            Kingston.Misc.HitSound.Sound = "Minecraft Hit"
                         elseif callback == "Steve" then
-                            Kingston.HitSound.Sound = "Steve"
+                            Kingston.Misc.HitSound.Sound = "Steve"
                         elseif callback == "1nn" then
-                            Kingston.HitSound.Sound = "1nn"
+                            Kingston.Misc.HitSound.Sound = "1nn"
                         elseif callback == "Rust" then
-                            Kingston.HitSound.Sound = "Rust"
+                            Kingston.Misc.HitSound.Sound = "Rust"
                         elseif callback == "TF2 Pan" then
-                            Kingston.HitSound.Sound = "TF2 Pan"
+                            Kingston.Misc.HitSound.Sound = "TF2 Pan"
                         elseif callback == "Neverlose" then
-                            Kingston.HitSound.Sound = "Neverlose"
+                            Kingston.Misc.HitSound.Sound = "Neverlose"
                         elseif callback == "Mario" then
-                            Kingston.HitSound.Sound = "Mario"
+                            Kingston.Misc.HitSound.Sound = "Mario"
                         end
                     end
                 }
@@ -1774,12 +1775,12 @@ if Kingston["Misc"].Skybox.Enabled then
                     Name = "Pitch",
                     Minimum = 0,
                     Maximum = 10,
-                    Default = Kingston.HitSound.Pitch,
+                    Default = Kingston.Misc.Hitsound.Pitch,
                     Decimals = .5,
                     suffix = "",
                     Pointer = "gools",
                     callback = function(ankle)
-                        Kingston.HitSound.Pitch = ankle
+                        Kingston.Misc.Hitsound.Pitch = ankle
                     end
                 }
             )
@@ -1789,12 +1790,12 @@ if Kingston["Misc"].Skybox.Enabled then
                     Name = "Volume",
                     Minimum = 0,
                     Maximum = 10,
-                    Default = Kingston.HitSound.Volume,
+                    Default = Kingston.Misc.Hitsound.Volume,
                     Decimals = .5,
                     suffix = "",
                     Pointer = "beatroot",
                     callback = function(ankle)
-                        Kingston.HitSound.Volume = ankle
+                        Kingston.Misc.Hitsound.Volume = ankle
                     end
                 }
             )
