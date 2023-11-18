@@ -1022,8 +1022,8 @@ if Kingston.Parrying.Spamming.Enabled then
         end
     end)
     end
-    if Kingston.HitSound["Enabled"] then
     ParryRemote.OnServerEvent:Connect(function(player)
+        if Kingston.HitSound["Enabled"] then
             local sound = Instance.new("Sound")
             sound.SoundId = Kingston.HitSound.Sound
             sound.Parent = player.Character:FindFirstChild("HumanoidRootPart") or player.Character
