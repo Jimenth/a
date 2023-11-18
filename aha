@@ -111,7 +111,6 @@ local UserInputService = game:GetService("UserInputService")
 local HTTPService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
 local StatsService = game:GetService("Stats")
-local runService = game:GetService("RunService")
 local MarketplaceService = game:GetService('MarketplaceService')
 local GroupService = game:GetService('GroupService')
 local ScriptContext = game:GetService('ScriptContext')
@@ -693,7 +692,7 @@ HitboxPart.Shape = Enum.PartType.Ball
 HitboxPart.CanCollide = false
 HitboxPart.CastShadow = false
 HitboxPart.Transparency = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Transparency
-runService.Stepped:Connect(
+RunService.Stepped:Connect(
     function(Time, DeltaTime)
         for i, ball in pairs(workspace.Balls:GetChildren()) do
             if ball:GetAttribute("realBall") then
@@ -1023,8 +1022,8 @@ if Kingston.Parrying.Spamming.Enabled then
         end
     end)
     end
+    if Kingston.HitSound["Enabled"] then
     ParryRemote.OnServerEvent:Connect(function(player)
-        if Kingston.HitSound["Enabled"] then
             local sound = Instance.new("Sound")
             sound.SoundId = Kingston.HitSound.Sound
             sound.Parent = player.Character:FindFirstChild("HumanoidRootPart") or player.Character
@@ -1069,9 +1068,8 @@ if Kingston.Parrying.Spamming.Enabled then
             elseif Kingston.HitSound.Sound == "Mario" then
                 sound.SoundId = "rbxassetid://5709456554"
             end
-        end
-    end)
-end 
+        end)
+    end
     
 if Kingston["Misc"].Skybox.Enabled then
     task.wait()
