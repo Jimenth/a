@@ -223,7 +223,7 @@ if Kingston.Options["Find Best Server"].Enabled then
         local commonLoadTime = 5
         task.wait(commonLoadTime)
     
-        local pingThreshold = Kingston.Options.FindBestServer.PingThreshold
+        local pingThreshold = Kingston.Options["Find Best Server"].PingThreshold
         local serverStats = StatsService.Network.ServerStatsItem
         local dataPing = serverStats["Data Ping"]:GetValueString()
         local pingValue = tonumber(dataPing:match("(%d+)"))
