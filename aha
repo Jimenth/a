@@ -1,0 +1,3874 @@
+local Kingston = {
+    ["GUI"] = {
+        ["Type"] = "Octernal", -- // Octernal, Mercury
+        ["Hide Bind"] = "K",
+        ["Size"] = Vector2.new(800, 800)
+        -- // Octernal is a drawing GUI that does not support Mobile.
+        -- // Mercury supports Mobile and PC
+    },
+    ["Options"] = {
+        ["Anti Error"] = false, -- // Doesnt show errors in F9 Console 
+        ["Bypass Idle Kick"] = false,
+        ["Spoof Device"] = {
+            ["Enabled"] = false, 
+            ["Device"] = "Android" -- // Just "Android" for now
+        },
+        ["Boost FPS"] = {
+            ["Enabled"] = false,
+            ["Unlock FPS"] = {
+                ["Enabled"] = false, 
+                ["Value"] = 60
+            }
+        },
+        ["Find Best Server"] = { 
+            ["Enabled"] = false, 
+            ["PingThreshold"] = "100" -- // The ping the server has to have. (Not Exact Ofc)
+        }
+    },
+    ["Parrying"] = {
+        ["Auto Parry"] = {
+            ["Enabled"] = false,
+            ["Print Information"] = false,
+            ["Face Ball"] = {
+                ["Enabled"] = false,
+                ["Keybind"] = "K"
+            },
+            ["Visualize Distance"] = { -- // Uses A "Sphere" / "Ball" Part
+                ["Enabled"] = false,
+                ["Color"] = Color3.new(1 , 0 , 0), -- // Red , Green , Blue
+                ["Transparency"] = 0 -- // 0 . Completely Visible | 1 . Invisible
+            }
+        },
+        ["Spamming"] = {
+            ["Enabled"] = false,
+            ["Distance"] = {15, 2}, -- // 1st Value = Dist Between You + Target, 2nd Value = Dist Between You + Ball
+            ["Notify"] = false,
+            ["Face Target"] = { -- // Disables when you die
+                ["Enabled"] = false,
+                ["Require Distance"] = false, -- // Checks if you're in the range (1st value on "Distance" before looking at the target)
+                ["Keybind"] = "P"
+            },
+            ["Visualize Distance"] = {
+                ["Enabled"] = false,
+                ["Mode"] = "Display Target", -- // "Display Target", "Display Ball", "Display Both"
+                ["Target Display"] = {
+                    ["Color"] = Color3.new(1 , 0 , 0),
+                    ["Transparency"] = 0
+                },
+                ["Ball Display"] = {
+                    ["Color"] = Color3.new(1 , 0 , 0),
+                    ["Transparency"] = 0,
+                }
+            }
+        }
+    },
+    ["Force Target"] = { -- // Beta
+        ["Enabled"] = false,
+        ["Keybind"] = "L",
+        ["Radius"] = {
+            ["Use Radius"] = false,
+            ["Size"] = {30, 15}, -- // Used for the box's size
+        },
+        ["Show Target"] = {
+            ["Enabled"] = false,
+            ["Type"] = "Highlight", -- // Only highlight (which isnt streamable not like the method is streamable either)
+            ["Color"] = Color3.new(1 , 0 , 4),
+            ["Transparency"] = 0.5
+        }
+    },
+    ["Ability Spammer"] = { -- // Spams The Selected Ability
+        ["Enabled"] = false,
+        ["Ability"] = "Freeze",
+        ["Keybind"] = "L"
+    },
+    ["Misc"] = {
+        ["Mod"] = { -- // Mod Detection
+            ["Enabled"] = false,
+            ["OnJoin"] = "Kick", -- // Kick, Notify
+            ["Notification"] = "Mod Joined",
+            ["Delay"] = 1,
+            ["Rank"] = 200
+        },
+        ["MemSpoofer"] = { -- // Spoofs your ingame memory
+            ["Enabled"] = false,
+            ["Range"] = {500, 520}, -- // Start, End
+            ["Delay"] = 1, -- // Delay between the time it changes (1 is normal)
+            ["Method"] = 0 -- // 0, 1
+        },
+        ["Movement"] = { -- // Speed Hacks
+            ["Enabled"] = false,
+            ["Type"] = "Humanoid.WS", -- // "CFrame", "Humanoid.WS"
+            ["Speed Value"] = 0.2,
+            ["DefaultWS"] = 70, -- // 70 Is the sprinting walkspeed for blade ball
+            ["Keybind"] = "Z"
+        },
+        ["HitSound"] = { -- // Plays when you parry the ball
+            ["Enabled"] = false,
+            ["Sound"] = "Bameware", -- // "Bameware", "Skeet", "Bonk", "Lazer Beam", "Windows XP Error", "TF2 Hitsound", "TF2 Critical", "TF2 Bat", "Bow Hit", "Bow", "OSU", "Minecraft Hit", "Steve", "1nn", "Rust", "TF2 Pan", "Neverlose", "Mario"
+            ["Pitch"] = -2,
+            ["Volume"] = 1.6
+        },
+        ["Skybox"] = {
+            ["Enabled"] = false,
+            ["Type"] = "Pink Sky" -- // "Pink Sky", "Red Sky", "Nebula", "Dark Night", "Space", "Purple Sky", "Green Sky"
+        },
+        ["TargetStrafe"] = {
+            ["Enabled"] = false,
+            ["Speed"] = 3,
+            ["Distance"] = 6,
+            ["Height"] = 3,
+            ["Keybind"] = "O",
+            ["Visualize"] = {
+                ["Enabled"] = false,
+                ["Color"] = Color3.new(0 , 1 , 0),
+                ["Transparency"] = 0
+            }
+        },
+        ["Lighting"] = {
+            ["Enabled"] = true,
+            ["Remove Fog"] = false,
+            ["Remove Textures"] = false,
+            ["Remove Grass"] = false,
+            ["Remove Reflections"] = false,
+            ["Remove Shadows"] = false,
+            ["Water %"] = {false, 50, Color3.new(1, 9, 3)} -- // Enable Water Reduction | Enable, Reduction Percentage, Color
+        },
+        ["Player"] = {
+            ["Enabled"] = true,
+            ["Jump Power"] = {false, 100},
+            ["Gravity"] = {false, -50}
+        },
+        ["Sword Grip"] = {
+            ["Enabled"] = false,
+            ["Delete Sword"] = false,
+            ["Values"] = {
+                ["Front"] = 3,
+                ["Side"] = 2,
+                ["Height"] = 5
+            }
+        },
+        ["Fly"] = {
+            ["Enabled"] = false,
+            ["Speed"] = 10,
+            ["Velocity"] = Vector3.new(0, 12, 0), -- // X, Y, Z
+            ["Keybind"] = "F"
+        }
+    }
+}
+
+NotifyLib.prompt('Kington | ', 'Beta Build Loaded | V ' .. Version .. ' |', 2)
+
+local sus = false -- // Used for Ability Spammer 
+local Version = "1.13.9"
+local CoreGui = game:GetService("CoreGui")
+local PerformanceStats = CoreGui:WaitForChild("RobloxGui"):WaitForChild("PerformanceStats", 1)
+local DevConsole = CoreGui:WaitForChild("DevConsoleMaster", 1)
+local UserInputService = game:GetService("UserInputService")
+local HTTPService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local StatsService = game:GetService("Stats")
+local MarketplaceService = game:GetService('MarketplaceService')
+local GroupService = game:GetService('GroupService')
+local ScriptContext = game:GetService('ScriptContext')
+local workspace = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local Localplayer = Players.LocalPlayer
+local Balls = workspace:WaitForChild("Balls")
+local VirtualUser = game:GetService("VirtualUser")
+local GuiService = game:GetService("GuiService")
+local ParryRemote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ParryAttempt")
+local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/xwel33/hud/main/Notification"))()
+local Light = game:GetService("Lighting")
+local SFC = setfpscap
+local FPS = Kingston.Options["Boost FPS"]["Unlock FPS"].Value
+local gameId = game.PlaceId
+local playerName = game.Players.Localplayer.Name
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+local Camera = game.Workspace.CurrentCamera
+local Mouse = Localplayer:GetMouse()
+
+
+local RadiusEnabled = Kingston["Force Target"]["Radius"]["Use Radius"]
+local ShowTargetEnabled = Kingston["Force Target"]["Show Target"]["Enabled"]
+local RadiusSize = Kingston["Force Target"]["Radius"]["Size"]
+local ShowTargetType = Kingston["Force Target"]["Show Target"]["Type"]
+local Keybind = Kingston["Force Target"]["Keybind"]
+
+local stats = Localplayer:WaitForChild("PlayerGui"):WaitForChild("Stats")
+local frames = stats:WaitForChild("PerformanceStats"):WaitForChild("FPS")
+
+Builders = {
+    Connections = {
+        CACHE_MEMORY    = {}; -- later used for the mem spoofer
+    },
+        Memory = 400; -- Current memory for memory spoofer
+}
+
+if Kingston.Options["Boost FPS"].Enabled then
+    if Kingston.Options["Boost FPS"]["Unlock FPS"].Enabled then
+    SFC(FPS)
+
+local function toggleDevConsoleVisibility(enable)
+    local coreGui = game:GetService("CoreGui")
+    local devConsoleUI = coreGui:FindFirstChild("DevConsoleUI", true)
+
+    if devConsoleUI then
+        local mainView = devConsoleUI:FindFirstChild("MainView")
+
+        if mainView then
+            mainView.Parent.Enabled = enable
+        end
+    end
+end
+
+game.DescendantAdded:Connect(function(descendant)
+    if descendant.Name == "MainView" and descendant.Parent.Name == "DevConsoleUI" and boostFPS then
+        task.wait()
+        toggleDevConsoleVisibility(false)
+    end
+end)
+
+vim:SendKeyEvent(true, "F9", 0, game)
+task.wait()
+vim:SendKeyEvent(false, "F9", 0, game)
+
+while true do
+    task.wait()
+
+    if boostFPS then
+        warn("")
+
+        if not game:GetService("CoreGui"):FindFirstChild("DevConsoleUI", true):FindFirstChild("MainView") then
+            toggleDevConsoleVisibility(true)
+            task.wait()
+            toggleDevConsoleVisibility(false)
+        end
+    end
+end
+end
+end 
+
+if Kingston.Options["Spoof Device"].Enabled == true and Kingston.Options["Spoof Device"].Device == "Android" then
+    local namecall, index;
+
+    namecall = hookmetamethod(game, "__namecall", function(...)
+        local args = {...};
+        local self = args[1];
+        local method = getnamecallmethod();
+    
+        if self == UserInputService or self == GuiService then
+            if method == "GetPlatform" then
+                return Enum.Platform.Android;
+            elseif method == "IsTenFootInterface" then
+                return false;
+            end
+        end
+    
+        return namecall(self, ...);
+    end)
+    
+    index = hookmetamethod(game, "__index", function(tbl, idx)
+        if tostring(getcallingscript()) ~= "ControlModule" and (tbl == UserInputService or tbl == GuiService) then
+            if idx == "TouchEnabled" then
+                return true;
+            elseif idx == "MouseEnabled" then
+                return false;
+            elseif idx == "KeyboardEnabled" then
+                return false;
+            end
+        end
+    
+        return index(tbl, idx);
+    end);    
+end
+
+if Kingston.Options["Unlock FPS"] then
+SFC(FPS);
+end
+
+if Kingston.Options["Bypass Idle Kick"] == true then
+    Players.Localplayer.Idled:Connect(function()
+        VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+    while true do
+        wait()
+    end
+end
+
+if Kingston.Options["Anti Error"] then
+    local connections = ScriptContext.Error:GetConnections()
+    for i, connection in ipairs(connections) do 
+        connection:Disable()
+    end
+end
+
+if Kingston.Options["Find Best Server"].Enabled then
+        local function fetchServersData(placeId, limit)
+            local url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?limit=%d", placeId, limit)
+            local success, response = pcall(function()
+                return HTTPService:JSONDecode(game:HttpGet(url))
+            end)
+    
+            if success and response and response.data then
+                return response.data
+            end
+    
+            return nil
+        end
+    
+        local placeId = game.PlaceId
+        local serverLimit = 100
+        local servers = fetchServersData(placeId, serverLimit)
+    
+        if not servers then
+            return
+        end
+    
+        local lowestPingServer = servers[1]
+    
+        for _, server in pairs(servers) do
+            if server["ping"] < lowestPingServer["ping"] and server.maxPlayers > server.playing then
+                lowestPingServer = server
+            end
+        end
+    
+        local commonLoadTime = 5
+        task.wait(commonLoadTime)
+    
+        local pingThreshold = Kingston.Options["Find Best Server"].PingThreshold
+        local serverStats = StatsService.Network.ServerStatsItem
+        local dataPing = serverStats["Data Ping"]:GetValueString()
+        local pingValue = tonumber(dataPing:match("(%d+)"))
+    
+        if pingValue >= pingThreshold then
+            TeleportService:TeleportToPlaceInstance(placeId, lowestPingServer.id)
+        else
+            
+        end
+    end
+
+if Kingston.Parrying["Auto Parry"].Enabled then
+    getgenv().Signal = Signal or {}
+
+    -- Function to get player points
+    function PlayerPoints()
+        local tbl = {}
+        for _, player in pairs(Players:GetPlayers()) do
+            local userId = tostring(player.UserId)
+            local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+
+            if humanoidRootPart and player == Localplayer then
+                tbl[userId] = Camera:WorldToScreenPoint(humanoidRootPart.Position)
+            end
+        end
+
+        print(unpack(tbl))
+        table.foreach(tbl, print)
+        return tbl
+    end
+
+    -- Function to perform the parry attempt
+    function Parry()
+        if Localplayer.Character then
+            local worldToScreenPoint = Camera:WorldToScreenPoint(Localplayer.Character.HumanoidRootPart.Position)
+            local args = {
+                [1] = 0.5,
+                [2] = workspace.CurrentCamera.CFrame,
+                [3] = PlayerPoints(),
+                [4] = {
+                    [1] = worldToScreenPoint.X,
+                    [2] = worldToScreenPoint.Y
+                }
+            }
+            if Kingston.Parrying["Auto Parry"]["Print Information"] then
+            warn("Players:", unpack(args[3]))
+            end
+            ParryRemote:FireServer(unpack(args))
+        end
+    end
+
+    -- Initialize debounce and last player and time variables
+    local Debounce = false
+    local LastPlayer = false
+    local LastTime = nil
+    local LastTime = LastTime
+
+    -- Function to anticipate
+    function Anticipate(Time)
+        if Debounce then
+            return
+        end
+
+        if LastTime then
+            local Sum = (Time - LastTime)
+            if Sum >= -25 and Sum <= 25 then
+                if Sum >= 25 or Sum <= -25 then
+                    return true
+                end
+            end
+        end
+
+        LastTime = Time
+    end
+
+    -- Function to calculate projectile time
+    function calculateProjectileTime(initialPosition, targetPosition, initialVelocity)
+        local distance = (targetPosition - initialPosition).Magnitude
+        local time = distance / initialVelocity.Magnitude
+        return time
+    end
+
+    -- Function to calculate distance between projectile and object
+    function calculateDistance(projectilePosition, objectPosition)
+        return math.abs((projectilePosition - objectPosition).Magnitude)
+    end
+
+    -- Function to check if the object can intercept (parry) the projectile
+    function canObjectParry(projectilePosition, objectPosition, projectileVelocity, objectVelocity)
+        local timeToIntercept = calculateProjectileTime(projectilePosition, objectPosition, projectileVelocity)
+        local distanceToIntercept = calculateDistance(projectilePosition + projectileVelocity * timeToIntercept, objectPosition + objectVelocity * timeToIntercept)
+        local AnticipateResult = Anticipate(timeToIntercept)
+
+        print("CanParry:", distanceToIntercept, timeToIntercept, AnticipateResult)
+
+        local conditions = {
+            (Anticipate and distanceToIntercept <= 60),
+            (distanceToIntercept <= 14 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.12),
+            (distanceToIntercept <= 13 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.12),
+            (distanceToIntercept <= 12 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.12),
+            (distanceToIntercept <= 11.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.1105),
+            (distanceToIntercept <= 11.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.1107),
+            (distanceToIntercept <= 11.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.1103),
+            (distanceToIntercept <= 11 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.11),
+            (distanceToIntercept <= 0.04 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.004),
+            (distanceToIntercept <= 0.05 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.005),
+            (distanceToIntercept <= 0.01 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.001),
+            (distanceToIntercept <= 0.03 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.003),
+            (distanceToIntercept <= 0.02 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.002),
+            (distanceToIntercept <= 8.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.085),
+            (distanceToIntercept <= 8.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.087),
+            (distanceToIntercept <= 8 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.08),
+            (distanceToIntercept <= 10 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.1),
+            (distanceToIntercept <= 10.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.17),
+            (distanceToIntercept <= 10.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.15),
+            (distanceToIntercept <= 10.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.13),
+            (distanceToIntercept <= 9 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.09),
+            (distanceToIntercept <= 9.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.093),
+            (distanceToIntercept <= 9.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.095),
+            (distanceToIntercept <= 9.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.097),
+            (distanceToIntercept <= 7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.07),
+            (distanceToIntercept <= 7.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.077),
+            (distanceToIntercept <= 7.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.075),
+            (distanceToIntercept <= 7.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.073),
+            (distanceToIntercept <= 6 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.06),
+            (distanceToIntercept <= 6.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.065),
+            (distanceToIntercept <= 6.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.063),
+            (distanceToIntercept <= 6.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.067),
+            (distanceToIntercept <= 5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.05),
+            (distanceToIntercept <= 5.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.055),
+            (distanceToIntercept <= 5.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.053),
+            (distanceToIntercept <= 5.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.057),
+            (distanceToIntercept <= 4 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.04),
+            (distanceToIntercept <= 4.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.043),
+            (distanceToIntercept <= 4.4 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.044),
+            (distanceToIntercept <= 4.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.045),
+            (distanceToIntercept <= 4.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.047),
+            (distanceToIntercept <= 4.8 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.048),
+            (distanceToIntercept <= 4.9 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.049),
+            (distanceToIntercept <= 4.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.043),
+            (distanceToIntercept <= 3.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.033),
+            (distanceToIntercept <= 3.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.035),
+            (distanceToIntercept <= 3.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.037),
+            (distanceToIntercept <= 3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.03),
+            (distanceToIntercept <= 2.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.025),
+            (distanceToIntercept <= 2.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.023),
+            (distanceToIntercept <= 2 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.02),
+            (distanceToIntercept <= 2.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.027),
+            (distanceToIntercept <= 2.8 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.028),
+            (distanceToIntercept <= 2.9 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.029),
+            (distanceToIntercept <= 1 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.01),
+            (distanceToIntercept <= 1.4 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.014),
+            (distanceToIntercept <= 1.6 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.016),
+            (distanceToIntercept <= 1.7 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.017),
+            (distanceToIntercept <= 1.5 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.015),
+            (distanceToIntercept <= 1.3 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.013),
+            (distanceToIntercept <= 1.2 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.012),
+            (distanceToIntercept <= 1.1 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.011),
+            (distanceToIntercept <= 0.1 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.001),
+            (distanceToIntercept <= 0.06 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.006),
+            (distanceToIntercept <= 0.07 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.007),
+            (distanceToIntercept <= 0.08 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.008),
+            (distanceToIntercept <= 0.011 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0011),
+            (distanceToIntercept <= 0.012 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0012),
+            (distanceToIntercept <= 0.013 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0013),
+            (distanceToIntercept <= 0.014 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0014),
+            (distanceToIntercept <= 0.015 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0015),
+            (distanceToIntercept <= 0.016 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0016),
+            (distanceToIntercept <= 0.017 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0017),
+            (distanceToIntercept <= 0.018 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0018),
+            (distanceToIntercept <= 0.009 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0009),
+            (distanceToIntercept <= 0.006 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0006),
+            (distanceToIntercept <= 0.005 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0005),
+            (distanceToIntercept <= 0.003 and
+                timeToIntercept >= 0.00000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0003),
+            (distanceToIntercept <= 0.001 and
+                timeToIntercept >= 0.0000000000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0001),
+            (distanceToIntercept <= 0.0001 and
+                timeToIntercept >= 0.0000000000000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.00001),
+            (distanceToIntercept <= 0.0005 and
+                timeToIntercept >= 0.000000000000000000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.00005),
+            (distanceToIntercept <= 0.00005 and
+                timeToIntercept >= 0.0000000000000000000000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.000005),
+            (distanceToIntercept <= 0 and
+                timeToIntercept >=
+                    0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 and
+                timeToIntercept <= 0.0000001)
+        }
+
+        for _, condition in pairs(conditions) do
+            if condition then
+                return true
+            end
+        end
+    end
+
+    -- Function to choose a new focused ball
+    function chooseNewFocusedBall()
+        local balls = workspace.Balls:GetChildren()
+        for _, ball in ipairs(balls) do
+            if ball:GetAttribute("realBall") ~= nil and ball:GetAttribute("realBall") == true then
+                return ball
+            end
+        end
+    end
+
+    -- Function to iterate through balls and perform actions
+    function foreach(Ball)
+        local focusedBall = chooseNewFocusedBall()
+        if Ball and not Debounce then
+            for i, v in pairs(Signal) do
+                table.remove(Signal, i)
+                v:Disconnect()
+            end
+            local function Calculation(Delta)
+                local start, humanoidRootPart, player = os.clock(), Localplayer.Character and Localplayer.Character:FindFirstChild("HumanoidRootPart"), Players:FindFirstChild(Ball:GetAttribute("target"))
+
+                if Ball and Ball:FindFirstChild("zoomies") and Ball:GetAttribute("target") == Localplayer.Name and humanoidRootPart and not Debounce then
+                    local timeToReachTarget = calculateProjectileTime(Ball.Position, humanoidRootPart.Position, Ball.Velocity)
+                    local distanceToTarget = calculateDistance(Ball.Position, humanoidRootPart.Position)
+                    local canParry = canObjectParry(Ball.Position, humanoidRootPart.Position, Ball.Velocity, humanoidRootPart.Velocity)
+
+                    if Kingston.Parrying["Auto Parry"]["Print Information"] then
+                    warn(timeToReachTarget, "Distance:", canParry)
+                    end
+                    
+                    if canParry then
+                        Parry()
+                        LastTime = LastTime
+                        Debounce = true
+                        local Signal = RunService.Stepped:Connect(function()
+                            if Kingston.Parrying["Auto Parry"]["Print Information"] then
+                            warn("False:", Ball:GetAttribute("target"), os.clock() - start, Ball, workspace.Dead:FindFirstChild(Localplayer.Name))
+                            end
+                            if Ball:GetAttribute("target") ~= Localplayer.Name or os.clock() - start >= 1.25 or not Ball or not workspace.Alive:FindFirstChild(Localplayer.Name) then
+                                if Kingston.Parrying["Auto Parry"]["Print Information"] then
+                                warn("Set to false")
+                                end
+                                Debounce = false
+                                Signal:Disconnect()
+                            end
+                        end)
+                    end
+                elseif Ball and Ball:FindFirstChild("zoomies") and Ball:GetAttribute("target") ~= Localplayer.Name and humanoidRootPart then
+                    -- local HumanoidRootPart = Player.Character and Player.Character:FindFirstChild("HumanoidRootPart")
+                    -- local Distance = CalculateDistance(HumanoidRootPart, Delta)
+                    LastPlayer = player
+                end
+            end
+            Signal[#Signal + 1] = RunService.Stepped:Connect(Calculation)
+        end
+    end
+
+    Localplayer.CharacterRemoving:Connect(
+        function()
+            if distanceVisualizer then
+                distanceVisualizer:Destroy()
+                distanceVisualizer = nil
+            end
+        end
+    )
+
+    -- Function to initialize the auto parry
+    function Init()
+        Balls.ChildAdded:Connect(foreach)
+
+        for _, ball in pairs(Balls:GetChildren()) do
+            foreach(ball)
+        end
+    end
+
+    -- Call the initialization function
+    Init()
+end
+
+if Kingston.Parrying["Auto Parry"]["Face Ball"].Enabled then
+    local function onKeyPress()
+        local realBall = chooseNewFocusedBall()
+        if realBall then
+            local realBallPosition = realBall.Position
+            workspace.CurrentCamera.CFrame = CFrame.lookAt(workspace.CurrentCamera.CFrame.Position, realBallPosition)
+        end
+    end
+    
+    local function onKeyRelease()
+        workspace.CurrentCamera.CFrame = CFrame.new(Vector3.new(), Vector3.new(0, 0, -1))
+    end
+    
+    game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
+        if not processed and input.KeyCode == Enum.KeyCode[Kingston.Parrying["Auto Parry"]["Face Ball"].Keybind] then
+            onKeyPress()
+        end
+    end)
+    
+    game:GetService("UserInputService").InputEnded:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode[Kingston.Parrying["Auto Parry"]["Face Ball"].Keybind] then
+            onKeyRelease()
+        end
+    end)
+end
+
+if Kingston.Parrying["Auto Parry"]["Visualize Distance"].Enabled then
+local Playervisual = game.Players.LocalPlayer
+local HitboxPart = Instance.new("Part", workspace)
+HitboxPart.Color = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Color
+HitboxPart.Anchored = true
+HitboxPart.Material = Enum.Material.ForceField
+HitboxPart.Shape = Enum.PartType.Ball
+HitboxPart.CanCollide = false
+HitboxPart.CastShadow = false
+HitboxPart.Transparency = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Transparency
+RunService.Stepped:Connect(
+    function(Time, DeltaTime)
+        for i, ball in pairs(workspace.Balls:GetChildren()) do
+            if ball:GetAttribute("realBall") then
+                local ballVelocity6 = ball.Velocity
+                local ballVolume = ball.Velocity.X + ball.Velocity.Y + ball.Velocity.Z
+                if Visual then
+                    HitboxPart.Position = Playervisual.Character.HumanoidRootPart.Position
+                    if ballVolume >= 1 then
+                        HitboxPart.Size = Vector3.new(ballVolume, ballVolume, ballVolume)
+                    elseif ballVolume <= 5 then
+                        HitboxPart.Size = Vector3.new(15, 15, 15)
+                    else
+                        HitboxPart.Size = -Vector3.new(ballVolume, ballVolume, ballVolume)
+                    end
+                else
+                    HitboxPart.Position = Vector3.new(0, 100000, 0)
+                end
+            end
+        end
+    end)
+end
+
+if Kingston.Parrying.Spamming.Enabled then
+    local function IsTarget()
+        local target
+        for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+            if player ~= game.Players.LocalPlayer and player.Character and player.Character:FindFirstChild("Highlight") then
+                target = player.Character.PrimaryPart
+            end
+        end
+        return target
+    end
+    
+    local function FireParryRemote()
+        local args = {
+            [1] = 1.5,
+            [2] = CFrame.new(-260, 120, -165, 1, 0, 0, 0, 0.9, 0.25, 0, -0.25, 0.96),
+            [3] = {
+              ["266226319"] = Vector3.new(1461, 212, -112),
+              ["3302585485"] = Vector3.new(342, 208, -141),
+              ["4245012857"] = Vector3.new(94, 174, 81),
+              ["908010761"] = Vector3.new(2126, 127, -51),
+              ["641022168"] = Vector3.new(847, 265, -182),
+              ["4490764036"] = Vector3.new(-5989, -288, -12),
+              ["2717890843"] = Vector3.new(-514, 28, -28),
+              ["1790608299"] = Vector3.new(70486, 12805, -0.5),
+              ["385891491"] = Vector3.new(1073, 216, -168),
+              ["1692348001"] = Vector3.new(639, 467, 31),
+              ["12440631"] = Vector3.new(640, 467, 31),
+              ["331610898"] = Vector3.new(2033, 69, -35),
+              ["3985733703"] = Vector3.new(511, 216, -168)
+            },
+            [4] = {
+              [1] = 1057,
+              [2] = 296
+            }
+          }
+    
+          if ParryRemote then
+            ParryRemote:FireServer(unpack(args))
+        else
+            NotifyLib.prompt('Error', 'Failed to get the parry remote', 2)
+        end
+    end
+    
+    while wait() do
+        FireParryRemote()
+    end
+    
+    local function onKeyPress()
+        local target = IsTarget()
+    
+        if target and target:IsA("BasePart") then
+            local distance = (target.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+            local character = player.Character
+                if character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            if Kingston.Parrying.Spamming["Face Target"]["Require Distance"] == true and Kingston.Parrying.Spamming["Face Target"].Enabled then
+            if distance <= Kingston.Parrying.Spamming.Distance then
+                if humanoid.Health <= 0 then
+                    workspace.CurrentCamera.CFrame = CFrame.new(Vector3.new(), Vector3.new(0, 0, -1))
+                workspace.CurrentCamera.CFrame = CFrame.lookAt(workspace.CurrentCamera.CFrame.Position, target.Position)
+            elseif Kingston.Parrying.Spamming["Face Target"]["Require Distance"] == false and Kingston.Parrying.Spamming["Face Target"].Enabled then
+                workspace.CurrentCamera.CFrame = CFrame.lookAt(workspace.CurrentCamera.CFrame.Position, target.Position)
+                if humanoid.Health <= 0 then
+                    workspace.CurrentCamera.CFrame = CFrame.new(Vector3.new(), Vector3.new(0, 0, -1))
+                end
+            end
+        end
+    end 
+end
+    
+    local function onKeyRelease()
+        workspace.CurrentCamera.CFrame = CFrame.new(Vector3.new(), Vector3.new(0, 0, -1))
+    end
+    
+    UserInputService.InputBegan:Connect(function(input, processed)
+        if not processed and input.KeyCode == Enum.KeyCode[Kingston.Parrying.Spamming["Face Target"].Keybind] then
+            onKeyPress()
+        end
+    end)
+    
+    UserInputService.InputEnded:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode[Kingston.Parrying.Spamming["Face Target"].Keybind] then
+            onKeyRelease()
+        end
+    end)
+    
+    spawn(function()
+        while true do
+            wait()
+            local target = IsTarget()
+
+            if target and target:IsA("BasePart") then
+                local distance = (target.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                local realBall = chooseNewFocusedBall()
+            
+                if realBall then
+                    local realBallPosition = realBall.Position
+                    local dist2 = (realBallPosition - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+            
+                    if distance <= Kingston.Parrying.Spamming.Distance[1] and dist2 <= Kingston.Parrying.Spamming.Distance[2] and Kingston.Parrying.Spamming.Notify then
+                        NotifyLib.prompt('Kingston', 'Currently Spamming...', 2)
+                        FireParryRemote()
+                    elseif distance <= Kingston.Parrying.Spamming.Distance[1] and dist2 <= Kingston.Parrying.Spamming.Distance[2] and not Kingston.Parrying.Spamming.Notify then
+                        FireParryRemote()
+                    end
+                else
+                    warn("Error : chooseNewFocusedBall() returned nil")
+                end
+            end
+    
+                if Kingston.Parrying.Spamming["Visualize Distance"].Enabled and Kingston.Parrying.Spamming["Visualize Distance"].Mode == "Display Target" then
+                    local Size1 = Vector3.new(Kingston.Parrying.Spamming.Distance[1], Kingston.Parrying.Spamming.Distance[1], Kingston.Parrying.Spamming.Distance[1])
+                    local ball = Instance.new("Part", workspace)
+                        ball.Size = Size1
+                        ball.Color = Kingston.Parrying.Spamming["Visualize Distance"]["Target Display"].Color
+                        ball.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                        ball.Transparency = Kingston.Parrying.Spamming["Visualize Distance"]["Target Display"].Transparency
+
+                    elseif Kingston.Parrying.Spamming["Visualize Distance"].Enabled and Kingston.Parrying.Spamming["Visualize Distance"].Mode == "Display Ball" then
+                        local Size2 = Vector3.new(Kingston.Parrying.Spamming.Distance[2], Kingston.Parrying.Spamming.Distance[2], Kingston.Parrying.Spamming.Distance[2])
+                        local ball = Instance.new("Part", workspace)
+                        ball.Size = Size2
+                        ball.Color = Kingston.Parrying.Spamming["Visualize Distance"]["Ball Display"].Color
+                        ball.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                        ball.Transparency = Kingston.Parrying.Spamming["Visualize Distance"]["Ball Display"].Transparency
+
+                    elseif Kingston.Parrying.Spamming["Visualize Distance"].Enabled and Kingston.Parrying.Spamming["Visualize Distance"].Mode == "Display Both" then 
+                        local Size1 = Vector3.new(Kingston.Parrying.Spamming.Distance[1], Kingston.Parrying.Spamming.Distance[1], Kingston.Parrying.Spamming.Distance[1])
+                        local ball = Instance.new("Part", workspace)
+                            ball.Size = Size1
+                            ball.Color = Kingston.Parrying.Spamming["Visualize Distance"]["Target Display"].Color
+                            ball.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                            ball.Transparency = Kingston.Parrying.Spamming["Visualize Distance"]["Target Display"].Transparency
+                        local Size2 = Vector3.new(Kingston.Parrying.Spamming.Distance[2], Kingston.Parrying.Spamming.Distance[2], Kingston.Parrying.Spamming.Distance[2])
+                        local ball = Instance.new("Part", workspace)
+                            ball.Size = Size2
+                            ball.Color = Kingston.Parrying.Spamming["Visualize Distance"]["Ball Display"].Color
+                            ball.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                            ball.Transparency = Kingston.Parrying.Spamming["Visualize Distance"]["Ball Display"].Transparency
+                end
+            end
+        end)
+    end
+end
+
+if Kingston["Force Target"].Enabled then
+    local Highlight = Instance.new("SurfaceGui")
+    Highlight.Name = "TargetHighlight"
+    Highlight.Face = Enum.NormalId.Front
+    Highlight.LightInfluence = 0
+    Highlight.Parent = game.Players
+    
+    function findClosestPlayer(position)
+        local PlayerPosition = Localplayer.Character and Localplayer.Character:FindFirstChild("HumanoidRootPart") and Localplayer.Character.HumanoidRootPart.Position
+        if not PlayerPosition then
+            return nil
+        end
+    
+        local ClosestPlayer = nil
+        local ClosestDistance = math.huge
+    
+        for _, OtherPlayer in pairs(game.Players:GetPlayers()) do
+            if OtherPlayer ~= Localplayer then
+                local Character = OtherPlayer.Character
+                if Character and Character:FindFirstChild("HumanoidRootPart") then
+                    local Distance = (position - Character.HumanoidRootPart.Position).magnitude
+                    if Distance < ClosestDistance then
+                        ClosestDistance = Distance
+                        ClosestPlayer = OtherPlayer
+                    end
+                end
+            end
+        end
+    
+        return ClosestPlayer
+    end
+    
+    function onKeyPress()
+        if not RadiusEnabled then
+            local TargetPosition = Vector3.new(0, 0, 0)
+            local Target = findClosestPlayer(TargetPosition)
+    
+            highlightAdornee(Target)
+        else
+            RadiusEnabled = not RadiusEnabled
+    
+            Highlight.Adornee = nil
+        end
+    end
+    
+    function highlightAdornee(Target)
+        if Target then
+            local Adornee = Target.Character and Target.Character:FindFirstChild("HumanoidRootPart")
+            if Adornee then
+                Highlight.Adornee = Adornee
+                if ShowTargetEnabled then
+                    showTarget(Adornee)
+                end
+            end
+        end
+    end
+    
+    function isPlayerInRadius(position)
+        if not RadiusEnabled then
+            return true
+        end
+    
+        local PlayerScreenPos = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+        local PlayerX = PlayerScreenPos.X
+        local PlayerY = PlayerScreenPos.Y
+    
+        local MouseX = Mouse.X
+        local MouseY = Mouse.Y
+    
+        local LeftX = MouseX - RadiusSize[1] / 2
+        local RightX = MouseX + RadiusSize[1] / 2
+        local TopY = MouseY - RadiusSize[2] / 2
+        local BottomY = MouseY + RadiusSize[2] / 2
+    
+        return PlayerX >= LeftX and PlayerX <= RightX and PlayerY >= TopY and PlayerY <= BottomY
+    end
+    
+    function showTarget(Adornee)
+        if ShowTargetType == "Highlight" then
+            local highlightSurface = Instance.new("SurfaceGui")
+            highlightSurface.Parent = Adornee
+            highlightSurface.Face = Enum.NormalId.Back
+            highlightSurface.LightInfluence = 0
+            highlightSurface.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+            local highlightFrame = Instance.new("Frame")
+            highlightFrame.Size = UDim2.new(2, 0, 2, 0)
+            highlightFrame.BackgroundColor3 = Kingston["Force Target"]["Show Target"]["Color"]
+            highlightFrame.BackgroundTransparency = Kingston["Force Target"]["Show Target"]["Transparency"]
+            highlightFrame.BorderSizePixel = 0
+            highlightFrame.Parent = highlightSurface
+        end
+    end
+    
+    function updateFacing()
+        local Target = findClosestPlayer(Vector3.new(0, 0, 0))
+        if Target then
+            local TargetPosition = Target.Character.HumanoidRootPart.Position
+            local LookVector = (TargetPosition - Localplayer.Character.HumanoidRootPart.Position).unit
+            Localplayer.Character:SetPrimaryPartCFrame(CFrame.new(Localplayer.Character.HumanoidRootPart.Position, Localplayer.Character.HumanoidRootPart.Position + Vector3.new(LookVector.x, 0, LookVector.z)))
+    
+            local PlayerPosition = Localplayer.Character.HumanoidRootPart.Position
+            local CameraLookAt = PlayerPosition + Vector3.new(LookVector.x, 0, LookVector.z)
+            local CameraCFrame = CFrame.new(PlayerPosition, CameraLookAt)
+            Camera.CFrame = CameraCFrame
+        end
+    end
+    
+    UserInputService.InputBegan:Connect(function(Input, GameProcessed)
+        if not GameProcessed and Input.KeyCode == Enum.Keycode[Keybind] then
+            onKeyPress()
+        end
+    end)
+    
+    RunService.Heartbeat:Connect(function()
+        updateFacing()
+    end)
+end
+
+        if Kingston["Misc"].Mod.Enabled then 
+            local isGroupGame = function() 
+                return MarketplaceService:GetProductInfo(game.PlaceId).Creator.CreatorType == 'Group'
+            end
+            
+            local creatorID, groupID
+        
+            if isGroupGame() then 
+                groupID = GroupService:GetGroupInfoAsync(MarketplaceService:GetProductInfo(game.PlaceId).Creator.CreatorTargetId).Id
+            else
+                creatorID = game.CreatorId
+            end
+        
+            if creatorID then 
+                for _, player in ipairs(Players:GetPlayers()) do 
+                    if player.UserId == creatorID then
+                        task.wait(Kingston["Misc"].Mod.Delay)
+                        if string.lower(Kingston["Misc"].Mod.OnJoin) == "Kick" then 
+                            Players.LocalPlayer:Kick(Kingston["Misc"].Mod.Notification)
+                        elseif string.lower(Kingston["Misc"].Mod.OnJoin) == "Notify" then
+                            NotifyLib.prompt('Kingston', Kingston["Misc"].Mod.Notification, 2)
+                        end
+                    end
+                end
+            elseif groupID then
+                for _, player in ipairs(Players:GetPlayers()) do 
+                    if player:IsInGroup(groupID) and player:GetRankInGroup(groupID) >= Kingston["Misc"].Mod.Rank then 
+                        if string.lower(Kingston["Misc"].Mod.OnJoin) == "Kick" then 
+                            Players.LocalPlayer:Kick(Kingston["Misc"].Mod.Notification)
+                        elseif string.lower(Kingston["Misc"].Mod.OnJoin) == "Notify" then
+                            NotifyLib.prompt('Kingston', Kingston["Misc"].Mod.Notification, 2)
+                        end
+                    end
+                    task.wait(1)
+                    end
+                end
+                task.wait()
+            end   
+
+    if Kingston["Ability Spammer"].Enabled then
+        local function toggleSus()
+            sus = not sus
+            if sus then
+                NotifyLib.prompt('Kingston', 'Ability Spammer | Enabled', 2)
+                while sus do
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild(Kingston["Ability Spammer"].Ability):FireServer()
+                    wait()
+                end
+            else
+                NotifyLib.prompt('Kingston', 'Ability Spammer | Disabled', 2)
+            end
+        end
+        
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if not gameProcessed and input.KeyCode == Enum.KeyCode[Kingston["Ability Spammer"].Keybind] then
+                toggleSus()
+            end
+        end)
+    end
+
+    if Kingston["Misc"].MemSpoofer.Enabled then
+        if PerformanceStats then
+            local function spoofMemory()
+                Builders.Memory = tonumber(string.format("%.2f", math.random() + math.random(-1, 1)))
+    
+                if Builders.Memory < math.random(Kingston["Misc"].MemSpoofer.Range[1], Kingston["Misc"].MemSpoofer.Range[2]) then
+                    Builders.Memory = math.random() + math.random(1, 2)
+                elseif Builders.Memory > math.random(Kingston["Misc"].MemSpoofer.Range[1] - math.random(10, 40), Kingston["Misc"].MemSpoofer.Range[2] - math.random(10, 30)) then
+                    Builders.Memory = math.random() + math.random(1, 2)
+                end
+            end
+    
+            -- Method 1
+            if Kingston["Misc"].MemSpoofer.Method == "1" then
+                for _, key in pairs(PerformanceStats:GetDescendants()) do
+                    if key:IsA("TextLabel") and key.Text == "Mem" then
+                        spoofMemory()
+                        key.Parent.ValueLabel.Text = string.format("%.2f MB", Builders.Memory)
+                    end
+                end
+    
+                if PerformanceStats:FindFirstChild("PS_Viewer") then
+                    for _, key in pairs(PerformanceStats:FindFirstChild("PS_Viewer"):GetDescendants()) do
+                        if key:IsA("TextLabel") and string.find(key.Text, "Current") then
+                            key.Text = string.format("Current: %.2f MB", Builders.Memory)
+                        elseif key:IsA("TextLabel") and string.find(key.Text, "Average") then
+                            key.Text = string.format("Average: %.2f MB", Builders.Memory - (math.random() * 1.45))
+                        end
+                    end
+                end
+    
+            elseif Kingston["Misc"].MemSpoofer.Method == "0" then
+                for _, key in pairs(PerformanceStats:GetDescendants()) do
+                    if key:IsA("TextLabel") and key.Text == "Mem" then
+                        if not Builders.Connections.CACHE_MEMORY.Spoofer1 then
+                            Builders.Connections.CACHE_MEMORY.Spoofer1 = key.Parent.ValueLabel:GetPropertyChangedSignal("Text"):Connect(function()
+                                if Kingston["Misc"].MemSpoofer.Enabled then
+                                    spoofMemory()
+                                    key.Parent.ValueLabel.Text = string.format("%.2f MB", Builders.Memory)
+                                    task.wait(Kingston["Misc"].MemSpoofer.Delay)
+                                end
+                            end)
+                        end
+                    end
+                end
+    
+                if PerformanceStats:FindFirstChild("PS_Viewer") then
+                    for _, key in pairs(PerformanceStats:FindFirstChild("PS_Viewer"):GetDescendants()) do
+                        if key:IsA("TextLabel") and string.find(key.Text, "Current") then
+                            if not Builders.Connections.CACHE_MEMORY.Current then
+                                Builders.Connections.CACHE_MEMORY.Current = key:GetPropertyChangedSignal("Text"):Connect(function()
+                                    key.Text = string.format("Current: %.2f MB", Builders.Memory)
+                                    task.wait(Kingston["Misc"].MemSpoofer.Delay)
+                                end)
+                            end
+                        elseif key:IsA("TextLabel") and string.find(key.Text, "Average") then
+                            if not Builders.Connections.CACHE_MEMORY.Avg then
+                                Builders.Connections.CACHE_MEMORY.Avg = key:GetPropertyChangedSignal("Text"):Connect(function()
+                                    key.Text = string.format("Average: %.2f MB", Builders.Memory + math.random())
+                                    task.wait(Kingston["Misc"].MemSpoofer.Delay)
+                                end)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    
+        if DevConsole then
+            for _, key in pairs(DevConsole:GetDescendants()) do
+                if key:IsA("TextButton") and key.Name == "MemoryUsage_MB" then
+                    if Kingston["Misc"].MemSpoofer.Method == "1" then
+                        key.Text = string.format("%.0f MB", tonumber(Builders.Memory))
+                    elseif Kingston["Misc"].MemSpoofer.Method == "0" then
+                        if not Builders.Connections.CACHE_MEMORY.DevConsole then
+                            Builders.Connections.CACHE_MEMORY.DevConsole = key:GetPropertyChangedSignal("Text"):Connect(function()
+                                key.Text = string.format("%.2f MB", tonumber(Builders.Memory))
+                                task.wait(Kingston["Misc"].MemSpoofer.Delay)
+                            end)
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    
+    if Kingston["Misc"].Movement.Enabled and Kingston["Misc"].Movement.Mode == "CFrame" then
+    repeat
+        wait()
+    until Localplayer.Character
+    
+    local MovementEnabled = true
+    getgenv().Multiplier = Kingston["Misc"].Movement["Speed Value"]
+    
+    UserInputService.InputBegan:connect(function(input)
+        if input.KeyCode == Enum.KeyCode[Kingston["Misc"].Movement.Keybind] then
+            MovementEnabled = not MovementEnabled
+            if MovementEnabled then
+                repeat
+                    Localplayer.Character.HumanoidRootPart.CFrame = Localplayer.Character.HumanoidRootPart.CFrame +
+                                                                        Localplayer.Character.Humanoid.MoveDirection *
+                                                                        getgenv().Multiplier
+                    RunService.Stepped:wait()
+                until not MovementEnabled
+            end
+        end
+    end)
+elseif Kingston["Misc"].Movement.Enabled and Kingston["Misc"].Movement.Mode == "Humanoid.WS" then
+    repeat
+        wait()
+    until Localplayer.Character
+    
+    local WalkspeedEnabled = true
+    getgenv().WalkspeedMultiplier = Kingston["Misc"].Movement["Speed Value"]
+    
+    UserInputService.InputBegan:connect(function(input)
+        if input.KeyCode == Enum.KeyCode[Kingston["Misc"].Movement.Keybind] then
+            WalkspeedEnabled = not WalkspeedEnabled
+            if WalkspeedEnabled then
+                repeat
+                    Localplayer.Character.Humanoid.WalkSpeed = getgenv().WalkspeedMultiplier
+                    RunService.Stepped:wait()
+                until not WalkspeedEnabled
+            else
+                Localplayer.Character.Humanoid.WalkSpeed = Kingston["Misc"].Movement.DefaultWS
+            end
+        end
+    end)
+    end
+    end
+
+    ParryRemote.OnClientEvent:Connect(function(player)
+        if Kingston.Misc.HitSound.Enabled then
+            local sound = Instance.new("Sound")
+    
+            if Kingston.Misc.HitSound.Sound == "Bameware" then
+                sound.SoundId = "rbxassetid://3124331820"
+            elseif Kingston.Misc.HitSound.Sound == "Skeet" then
+                sound.SoundId = "rbxassetid://4753603610"
+            elseif Kingston.Misc.HitSound.Sound == "Bonk" then
+                sound.SoundId = "rbxassetid://3765689841"
+            elseif Kingston.Misc.HitSound.Sound == "Lazer Beam" then
+                sound.SoundId = "rbxassetid://130791043"
+            elseif Kingston.Misc.HitSound.Sound == "Windows XP Error" then
+                sound.SoundId = "rbxassetid://160715357"
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Hitsound" then
+                sound.SoundId = "rbxassetid://3455144981"
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Critical" then
+                sound.SoundId = "rbxassetid://296102734"
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Bat" then
+                sound.SoundId = "rbxassetid://3333907347"
+            elseif Kingston.Misc.HitSound.Sound == 'Bow Hit' then
+                sound.SoundId = "rbxassetid://1053296915"
+            elseif Kingston.Misc.HitSound.Sound == 'Bow' then
+                sound.SoundId = "rbxassetid://3442683707"
+            elseif Kingston.Misc.HitSound.Sound == 'OSU' then
+                sound.SoundId = "rbxassetid://7147454322"
+            elseif Kingston.Misc.HitSound.Sound == 'Minecraft Hit' then
+                sound.SoundId = "rbxassetid://4018616850"
+            elseif Kingston.Misc.HitSound.Sound == 'Steve' then
+                sound.SoundId = "rbxassetid://5869422451"
+            elseif Kingston.Misc.HitSound.Sound == '1nn' then
+                sound.SoundId = "rbxassetid://7349055654"
+            elseif Kingston.Misc.HitSound.Sound == 'Rust' then
+                sound.SoundId = "rbxassetid://3744371091"
+            elseif Kingston.Misc.HitSound.Sound == "TF2 Pan" then
+                sound.SoundId = "rbxassetid://3431749479"
+            elseif Kingston.Misc.HitSound.Sound == "Neverlose" then
+                sound.SoundId = "rbxassetid://8679627751"
+            elseif Kingston.Misc.HitSound.Sound == "Mario" then
+                sound.SoundId = "rbxassetid://5709456554"
+    
+            end
+    
+            local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+            sound.Parent = humanoidRootPart or player.Character
+            sound.Volume = Kingston.Misc.HitSound.Volume
+            sound.Pitch = Kingston.Misc.HitSound.Pitch
+            sound:Play()
+        end
+    end)
+
+if Kingston["Misc"].Skybox.Enabled then
+    task.wait()
+                        if Kingston["Misc"].Skybox.Enabled and Kingston["Misc"].Skybox.Type == "Pink Sky" then
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=1279987105"
+                            game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=1279987105"
+                            game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=1279987105"
+                            game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=1279987105"
+                            game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=1279987105"
+                            game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=1279987105"
+                        elseif Kingston["Misc"].Skybox.Type == "Red Sky" then 
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=2571711090"
+                            game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=2571711090"
+                            game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=2571711090"
+                            game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=2571711090"
+                            game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=2571711090"
+                            game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=2571711090"
+                        elseif Kingston["Misc"].Skybox.Type == "Nebula" then 
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://6277563515"
+                            game:GetService("Lighting").Sky.SkyboxDn = "rbxassetid://6277565742"
+                            game:GetService("Lighting").Sky.SkyboxFt = "rbxassetid://6277567481"
+                            game:GetService("Lighting").Sky.SkyboxLf = "rbxassetid://6277569562"
+                            game:GetService("Lighting").Sky.SkyboxRt = "rbxassetid://6277583250"
+                            game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://6277586065"
+                        elseif Kingston["Misc"].Skybox.Type == "Dark Night" then 
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://6285719338"
+                            game:GetService("Lighting").Sky.SkyboxDn = "rbxassetid://6285721078"
+                            game:GetService("Lighting").Sky.SkyboxFt = "rbxassetid://6285722964"
+                            game:GetService("Lighting").Sky.SkyboxLf = "rbxassetid://6285724682"
+                            game:GetService("Lighting").Sky.SkyboxRt = "rbxassetid://6285726335"
+                            game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://6285730635"
+                        elseif Kingston["Misc"].Skybox.Type == "Space" then 
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://877168885"
+                            game:GetService("Lighting").Sky.SkyboxDn = "rbxassetid://877169070"
+                            game:GetService("Lighting").Sky.SkyboxFt = "rbxassetid://877169154"
+                            game:GetService("Lighting").Sky.SkyboxLf = "rbxassetid://877169233"
+                            game:GetService("Lighting").Sky.SkyboxRt = "rbxassetid://877169317"
+                            game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://877169431"
+                        elseif Kingston["Misc"].Skybox.Type == "Purple Sky" then 
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=9971120429"
+                            game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=9971120429"
+                            game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=9971120429"
+                            game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=9971120429"
+                            game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=9971120429"
+                            game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=9971120429"
+                        elseif Kingston["Misc"].Skybox.Type == "Green Sky" then
+                            Light["ClockTime"] = "12";
+                            game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=8754359769"
+                            game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=8754359769"
+                            game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=8754359769"
+                            game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=8754359769"
+                            game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=8754359769"
+                            game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=8754359769"
+                        end
+                    end
+
+                    if Kingston["Misc"]["TargetStrafe"].Enabled then
+                    local function IsTarget()
+                        local target
+                        for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+                            if player ~= game.Players.LocalPlayer and player.Character and player.Character:FindFirstChild("Highlight") then
+                                target = player.Character.PrimaryPart
+                            end
+                        end
+                        return target
+                    end
+                    
+                    local function UpdateTargetStrafe()
+                        if Kingston["Misc"]["TargetStrafe"].Enabled then
+                            local target = IsTarget()
+                    
+                            if target then
+                                angle_Y = angle_Y + RunService.RenderStepped:Wait() / Kingston["Misc"]["TargetStrafe"].Speed % 1
+                                local LocalPlayer = game.Players.LocalPlayer
+                                LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(target.Position) * CFrame.Angles(0, 2 * math.pi * angle_Y, 0) * CFrame.new(0, Kingston["Misc"]["TargetStrafe"].Height, Kingston["Misc"]["TargetStrafe"].Distance)
+                            end
+                        end
+                    end
+                    
+                    RunService.RenderStepped:Connect(UpdateTargetStrafe)
+                    
+                    UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+                        if not gameProcessedEvent and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == Enum.Keycode[Kingston["Misc"]["TargetStrafe"].Keybind] then
+                            -- Toggle TargetStrafe on key press
+                            Kingston["Misc"]["TargetStrafe"].Enabled = not Kingston["Misc"]["TargetStrafe"].Enabled
+                        end
+                    end)
+                    
+                    -- Visualization
+                    if Kingston["Misc"]["TargetStrafe"].Visualize.Enabled then
+                        local targetStrafeRangePart = Instance.new("Part", workspace)
+                        targetStrafeRangePart.Size = Vector3.new(Kingston["Misc"]["TargetStrafe"].Distance * 0.7, 0.01, Kingston["Misc"]["TargetStrafe"].Distance * 0.7)
+                        targetStrafeRangePart.Anchored = true
+                        targetStrafeRangePart.CanCollide = false
+                        targetStrafeRangePart.Transparency = Kingston["Misc"]["TargetStrafe"].Visualize.Transparency
+                    
+                        local function UpdateVisualize()
+                            if Kingston["Misc"]["TargetStrafe"].Visualize.Enabled and Kingston["Misc"]["TargetStrafe"].Enabled then
+                                targetStrafeRangePart.CFrame = CFrame.new(TargetTarget.Character.HumanoidRootPart.Position)
+                                targetStrafeRangePart.Color = Kingston["Misc"]["TargetStrafe"].Visualize.Color
+                            else
+                                targetStrafeRangePart.CFrame = CFrame.new(0, 9999, 0)
+                            end
+                        end
+                    
+                        RunService.RenderStepped:Connect(UpdateVisualize)
+                    end
+                end
+
+                local function updateFeatures()
+                    if Kingston["Misc"]["Lighting"]["Enabled"] then
+                        if Kingston["Misc"]["Lighting"]["Remove Fog"] then
+                            Light.Fog = 0
+                        end
+                
+                        if Kingston["Misc"]["Lighting"]["Remove Grass"] then
+                            for _, obj in pairs(workspace:GetDescendants()) do
+                                if obj:IsA("Terrain") then
+                                    obj.Material = Enum.Material.SmoothPlastic
+                                end
+                            end
+                        end
+                
+                        if Kingston["Misc"]["Lighting"]["Water %"][1] then
+                            local water = workspace:FindFirstChild("Water")
+                            if water then
+                                water.Transparency = Kingston["Misc"]["Lighting"]["Water %"][2] / 100
+                                water.Color = Kingston["Misc"]["Lighting"]["Water %"][3]
+                            end
+                        end
+                    end
+                end
+                updateFeatures()
+
+                while Kingston.Misc["Sword Grip"].Enabled do
+                    game:GetService("RunService").Stepped:wait()
+                    local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                    tool.GripPos = Vector3.new(
+                        Kingston.Misc["Sword Grip"].Values["Side"],
+                        Kingston.Misc["Sword Grip"].Values["Height"],
+                        Kingston.Misc["Sword Grip"].Values["Front"]
+                    )
+                end
+
+                if Kingston.Misc["Sword Grip"]["Delete Sword"] then
+                tool.GripPos = Vector3.new(
+                Kingston.Misc["Sword Grip"].Values["Side"] == 10000,
+                Kingston.Misc["Sword Grip"].Values["Height"] == 10000,
+                Kingston.Misc["Sword Grip"].Values["Front"] == 10000
+                )
+                end
+                
+                if Kingston.Misc["Sword Grip"].Enabled == false then
+                    local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                    tool.GripPos = Vector3.new(0, 0, 0)
+                end
+
+                local FlyLoop
+
+game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed then
+        if input.UserInputType == Enum.UserInputType.Keyboard then
+            if input.KeyCode == Enum.KeyCode[Kingston.Misc.Fly.Keybind] then
+                Kingston.Misc.Fly.Enabled = not Kingston.Misc.Fly.Enabled
+                if Kingston.Misc.Fly.Enabled then
+                    FlyLoop = game:GetService("RunService").Stepped:Connect(function()
+                        spawn(function()
+                            pcall(function()
+                                if Kingston.Misc.Fly.Enabled then
+                                    local speed = Kingston.Misc.Fly.Speed
+                                    local velocity = Kingston.Misc.Fly.Velocity
+                                    local UserInputService = game:GetService("UserInputService")
+
+                                    if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+                                        velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * speed)
+                                    end
+                                    if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+                                        velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * -speed)
+                                    end
+                                    if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+                                        velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * -speed)
+                                    end
+                                    if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+                                        velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * speed)
+                                    end
+
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
+                                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Freefall")
+                                end
+                            end)
+                        end)
+                    end)
+                elseif FlyLoop then
+                    FlyLoop:Disconnect()
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Seated")
+                end
+            end
+        end
+    end
+end)
+
+                    if Kingston["GUI"]["Type"] == "Octernal" then
+        local m_thread = task
+        do
+            setreadonly(m_thread, false)
+        
+            function m_thread.spawn_loop(p_time, p_callback)
+                m_thread.spawn(
+                    function()
+                        while true do
+                            p_callback()
+                            m_thread.wait(p_time)
+                        end
+                    end
+                )
+            end
+        
+            setreadonly(m_thread, true)
+        end
+        
+        local library, pointers = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jimenth/UILib/main/Octernal"))()
+        do
+        
+            local window = library:New({name = "Kingston [" .. gameId .. "] | " .. playerName .. " | " .. Version " | " .. Ping .. " | "  .. frames .. " | ", size = Kingston.GUI.Size, Accent = Color3.fromRGB(192, 118, 227)})
+        
+            local main = window:Page({name = "Main", size = 80})
+            local misc = window:Page({name = "Misc", size = 80})
+            local vis = window:Page({name = "Visuals", size = 80})
+            local play = window:Page({name = "Player", size = 80})
+        
+            local parry = main:Page({name = "Parrying", side = "Left", size = 110})
+            local dist = main:Page({name = "Auto Parry Visualizer", side = "Right", size = 110})
+            local dist2 = main:Page({name = "Spam Parry Visualizer", side = "Left", size = 110})
+        
+            local mesc = misc:Page({name = "Options", side = "Right", size = 110})
+            local device = misc:Page({name = "Device Spoofer", side = "Left", size = 110})
+            local ability = misc:Page({name = "Ability Spammer", side = "Right", size = 110})
+            local mod = misc:Page({name = "Mod Detection", side = "Left", size = 110})
+            local mem = misc:Page({name = "Memory Spoofer", side = "Right", size = 110})
+
+            local move = play:Page({name = "Movement", side = "Left", size = 110})
+            local strafe = play:Page({name = "Target Strafe", side = "Right", size = 110})
+            local sword = play:Page({name = "Sword Grip", side = "Left", size = 110})
+            local fly = play:Page({name = "Fly", side = "Right", size = 110})
+
+            local sky = vis:Page({name = "Sky Box", side = "Left", size = 110})
+            local hit = vis:Page({name = "Hit Sound", side = "Right", size = 110})
+            local light = vis:Page({name = "Lighting", side = "Left", size = 110})
+
+            parry:Toggle(
+                {
+                    pointer = "autoparry",
+                    name = "Enable Auto Parry",
+                    default = Kingston.Parrying["Auto Parry"].Enabled,
+                    callback = function(state)
+                        Kingston.Parrying["Auto Parry"].Enabled = state
+                    end
+                }
+            )
+
+            parry:Toggle(
+                {
+                    pointer = "gawkingston",
+                    name = "Print Information",
+                    default = Kingston.Parrying["Auto Parry"]["Print Information"],
+                    callback = function(state)
+                        Kingston.Parrying["Auto Parry"]["Print Information"] = state
+                    end
+                }
+            )
+
+            parry:Toggle(
+                {
+                    pointer = "gulpamine",
+                    name = "Face Ball",
+                    default = Kingston.Parrying["Auto Parry"]["Face Ball"].Enabled,
+                    callback = function(state)
+                        Kingston.Parrying["Auto Parry"]["Face Ball"].Enabled = state
+                    end
+                }
+            )
+        
+            parry:Keybind(
+                {
+                    pointer = "guildaif",
+                    name = "Face Ball Keybind",
+                    default = Kingston.Parrying["Auto Parry"]["Face Ball"].Keybind,
+                    callback = function(p_state)
+                        Kingston.Parrying["Auto Parry"]["Face Ball"].Keybind = p_state
+                    end
+                }
+            )
+
+            parry:Toggle(
+                {
+                    pointer = "spamparry",
+                    name = "Enable Spam Parry",
+                    default = Kingston.Parrying["Spamming"].Enabled,
+                    callback = function(state)
+                        Kingston.Parrying["Spamming"].Enabled = state
+                    end
+                }
+            )
+
+            parry:Toggle(
+                {
+                    pointer = "gulpamine",
+                    name = "Face Spam Parry Target",
+                    default = Kingston.Parrying["Spamming"]["Face Target"].Enabled,
+                    callback = function(state)
+                        Kingston.Parrying["Spamming"]["Face Target"].Enabled = state
+                    end
+                }
+            )
+
+            parry:Keybind(
+                {
+                    pointer = "guildaif",
+                    name = "Face Spam Parry Target Keybind",
+                    default = Kingston.Parrying["Spamming"]["Face Target"].Keybind,
+                    callback = function(p_state)
+                        Kingston.Parrying["Spamming"]["Face Target"].Keybind = p_state
+                    end
+                }
+            )
+
+            parry:Toggle(
+                {
+                    pointer = "godamn",
+                    name = "Spam Parry Notification",
+                    default = Kingston.Parrying["Auto Parry"].Spamming.Notify,
+                    callback = function(state)
+                        Kingston.Parrying["Auto Parry"].Spamming.Notify = state
+                    end
+                }
+            )
+        
+            parry:Slider(
+                {
+                    Name = "Spam Parry Distance",
+                    Minimum = 0,
+                    Maximum = 50,
+                    Default = Kingston.Parrying["Spamming"].Distance,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "distence",
+                    callback = function(ankle)
+                        Kingston.Parrying["Spamming"].Distance = ankle
+                    end
+                }
+            )
+
+            parry:Toggle(
+                {
+                    pointer = "Bombaclattttt",
+                    name = "Require Distance",
+                    default = Kingston.Parrying["Spamming"]["Face Target"]["Require Distance"],
+                    callback = function(state)
+                        Kingston.Parrying["Spamming"]["Face Target"]["Require Distance"] = state
+                    end
+                }
+            )
+        
+            dist:Toggle(
+                {
+                    pointer = "visual",
+                    name = "Distance Visualizer",
+                    default = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Enabled,
+                    callback = function(state)
+                        Kingston.Parrying["Auto Parry"]["Visualize Distance"].Enabled = state
+                    end
+                }
+            )
+        
+            dist:Colorpicker(
+                {
+                    pointer = "distcolor",
+                    name = "Visualizer Color",
+                    default = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Color,
+                    callback = function(color)
+                        Kingston.Parrying["Auto Parry"]["Visualize Distance"].Color = color
+                    end
+                }
+            )
+        
+            dist:Slider(
+                {
+                    Name = "Visualizer Transparency",
+                    Minimum = 0,
+                    Maximum = 1,
+                    Default = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Transparency,
+                    Decimals = .1,
+                    suffix = "",
+                    Pointer = "disttranspart",
+                    callback = function(ankle)
+                        Kingston.Parrying["Auto Parry"]["Visualize Distance"].Transparency = ankle
+                    end
+                }
+            )
+
+            dist2:Toggle(
+                {
+                    pointer = "visual2",
+                    name = "Distance Visualizer",
+                    default = Kingston.Parrying["Spamming"]["Visualize Distance"].Enabled,
+                    callback = function(state)
+                        Kingston.Parrying["Spamming"]["Visualize Distance"].Enabled = state
+                    end
+                }
+            )
+
+            dist2:Dropdown(
+                {
+                    Name = "Visualizer Method",
+                    Options = {"Display Target", "Display Ball", "Display Both"},
+                    Default = Kingston.Parrying["Spamming"]["Visualize Distance"].Mode,
+                    Pointer = "goldiodsojgn",
+                    callback = function(callback)
+                        if callback == "Display Target" then
+                            Kingston.Parrying["Spamming"]["Visualize Distance"].Mode = "Target Display"
+                        elseif callback == "Display Ball" then
+                            Kingston.Parrying["Spamming"]["Visualize Distance"].Mode = "Ball Display"
+                        elseif callback == "Display Both" then
+                            Kingston.Parrying["Spamming"]["Visualize Distance"].Mode = "Both Display"
+                        end
+                    end
+                }
+            )
+        
+            dist2:Colorpicker(
+                {
+                    pointer = "distcolor2",
+                    name = "Target Visualizer Color",
+                    default = Kingston.Parrying["Spamming"]["Visualize Distance"]["Target Display"].Color,
+                    callback = function(color)
+                        Kingston.Parrying["Spamming"]["Visualize Distance"]["Target Display"].Color = color
+                    end
+                }
+            )
+        
+            dist2:Slider(
+                {
+                    Name = "Target Visualizer Transparency",
+                    Minimum = 0,
+                    Maximum = 1,
+                    Default = Kingston.Parrying["Spamming"]["Visualize Distance"]["Target Display"].Transparency,
+                    Decimals = .1,
+                    suffix = "",
+                    Pointer = "disttranspart2",
+                    callback = function(ankle)
+                        Kingston.Parrying["Spamming"]["Visualize Distance"]["Target Display"].Transparency = ankle
+                    end
+                }
+            )
+
+            dist2:Colorpicker(
+                {
+                    pointer = "nigers",
+                    name = "Ball Visualizer Color",
+                    default = Kingston.Parrying["Spamming"]["Visualize Distance"]["Ball Display"].Color,
+                    callback = function(color)
+                        Kingston.Parrying["Spamming"]["Visualize Distance"]["Ball Display"].Color = color
+                    end
+                }
+            )
+        
+            dist2:Slider(
+                {
+                    Name = "Ball Visualizer Transparency",
+                    Minimum = 0,
+                    Maximum = 1,
+                    Default = Kingston.Parrying["Spamming"]["Visualize Distance"]["Ball Display"].Transparency,
+                    Decimals = .1,
+                    suffix = "",
+                    Pointer = "hehehheaha",
+                    callback = function(ankle)
+                        Kingston.Parrying["Spamming"]["Visualize Distance"]["Ball Display"].Transparency = ankle
+                    end
+                }
+            )
+        
+            mesc:Toggle(
+                {
+                    pointer = "hahe",
+                    name = "Disable Errors",
+                    default = Kingston.Options["Anti Error"],
+                    callback = function(state)
+                        Kingston.Options["Anti Error"] = state
+                    end
+                }
+            )
+        
+            mesc:Toggle(
+                {
+                    pointer = "arga",
+                    name = "Bypass Idle Kick",
+                    default = Kingston.Options["Bypass Idle Kick"],
+                    callback = function(state)
+                        Kingston.Options["Bypass Idle Kick"] = state
+                    end
+                }
+            )
+        
+            mesc:Toggle(
+                {
+                    pointer = "frames",
+                    name = "Unlock FPS",
+                    default = Kingston.Options["Unlock FPS"],
+                    callback = function(state)
+                        Kingston.Options["Unlock FPS"] = state
+                    end
+                }
+            )
+        
+            device:Toggle(
+                {
+                    pointer = "spefw",
+                    name = "Spoof Device",
+                    default = Kingston.Options["Spoof Device"].Enabled,
+                    callback = function(state)
+                        Kingston.Options["Spoof Device"].Enabled = state
+                    end
+                }
+            )
+        
+            device:Dropdown(
+                {
+                    Name = "Spoofer",
+                    Options = {"Android"},
+                    Default = Kingston.Options["Spoof Device"].Device,
+                    Pointer = "devicee",
+                    callback = function(callback)
+                        if callback == "Android" then
+                            Kingston.Options["Spoof Device"].Device = "Android"
+                        end
+                    end
+                }
+            )
+        
+        
+            ability:Toggle(
+                {
+                    pointer = "gyulp",
+                    name = "Enable Ability Spammer",
+                    default = Kingston["Ability Spammer"].Enabled,
+                    callback = function(state)
+                        Kingston["Ability Spammer"].Enabled = state
+                    end
+                }
+            )
+        
+            ability:Dropdown(
+                {
+                    Name = "Ability To Spam",
+                    Options = {"Freeze", "Pulse", "Telekinesis", "Invisibility", "Forcefield"},
+                    Default = Kingston["Ability Spammer"].Ability,
+                    Pointer = "laga",
+                    callback = function(callback)
+                        if callback == "Freeze" then
+                            Kingston["Ability Spammer"].Ability = "Freeze"
+                        elseif callback == "Pulse" then
+                            Kingston["Ability Spammer"].Ability = "Pulse"
+                        elseif callback == "Telekinesis" then
+                            Kingston["Ability Spammer"].Ability = "Telekinesis"
+                        elseif callback == "Invisibility" then
+                            Kingston["Ability Spammer"].Ability = "Invisibility"
+                        elseif callback == "Forcefield" then
+                            Kingston["Ability Spammer"].Ability = "Forcefield"
+                        end
+                    end
+                }
+            )
+        
+            ability:Keybind(
+                {
+                    pointer = "settings/menu/bind",
+                    name = "Keybind",
+                    default = Kingston["Ability Spammer"].Keybind,
+                    callback = function(p_state)
+                        Kingston["Ability Spammer"].Keybind = p_state
+                    end
+                }
+            )
+        
+            mod:Toggle(
+                {
+                    pointer = "ehar",
+                    name = "Enable Mod Detection",
+                    default = Kingston["Misc"].Mod.Enabled,
+                    callback = function(state)
+                        Kingston["Misc"].Mod.Enabled = state
+                    end
+                }
+            )
+        
+            mod:Dropdown(
+                {
+                    Name = "Notification",
+                    Options = {"Kick", "Notify"},
+                    Default = Kingston["Misc"].Mod.OnJoin,
+                    Pointer = "gahult",
+                    callback = function(callback)
+                        if callback == "Kick" then
+                            Kingston["Misc"].Mod.OnJoin = "Kick"
+                        elseif callback == "Notify" then
+                            Kingston["Misc"].Mod.OnJoin = "Notify"
+                        end
+                    end
+                }
+            )
+        
+            mod:Slider(
+                {
+                    Name = "Delay",
+                    Minimum = 1,
+                    Maximum = 10,
+                    Default = Kingston["Misc"].Mod.Delay,
+                    Decimals = .1,
+                    suffix = "",
+                    Pointer = "moddelay",
+                    callback = function(ankle)
+                        Kingston["Misc"].Mod.Delay = ankle
+                    end
+                }
+            )
+        
+            mod:Slider(
+                {
+                    Name = "Rank",
+                    Minimum = 1,
+                    Maximum = 255,
+                    Default = Kingston["Misc"].Mod.Rank,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "modrank",
+                    callback = function(ankle)
+                        Kingston["Misc"].Mod.Rank = ankle
+                    end
+                }
+            )
+        
+            mem:Toggle(
+                {
+                    pointer = "cock",
+                    name = "Enable Memory Spoofer",
+                    default = Kingston["Misc"].MemSpoofer.Enabled,
+                    callback = function(state)
+                        Kingston["Misc"].MemSpoofer.Enabled = state
+                    end
+                }
+            )
+        
+            mem:Slider(
+                {
+                    Name = "Range Start",
+                    Minimum = 0,
+                    Maximum = 1500,
+                    Default = Kingston["Misc"].MemSpoofer.Range[1],
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "goald",
+                    callback = function(ankle)
+                        Kingston["Misc"].MemSpoofer.Range[1] = ankle
+                    end
+                }
+            )
+        
+            mem:Slider(
+                {
+                    Name = "Range End",
+                    Minimum = 0,
+                    Maximum = 1500,
+                    Default = Kingston["Misc"].MemSpoofer.Range[2],
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "akld",
+                    callback = function(ankle)
+                        Kingston["Misc"].MemSpoofer.Range[2] = ankle
+                    end
+                }
+            )
+        
+            mem:Slider(
+                {
+                    Name = "Delay",
+                    Minimum = 0,
+                    Maximum = 5,
+                    Default = Kingston["Misc"].MemSpoofer.Delay,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "gaiold",
+                    callback = function(ankle)
+                        Kingston["Misc"].MemSpoofer.Delay = ankle
+                    end
+                }
+            )
+        
+            mem:Dropdown(
+                {
+                    Name = "Notification",
+                    Options = {"0", "1"},
+                    Default = Kingston["Misc"].MemSpoofer.Method,
+                    Pointer = "gai38mft",
+                    callback = function(callback)
+                        if callback == "0" then
+                            Kingston["Misc"].MemSpoofer.Method = 0
+                        elseif callback == "1" then
+                            Kingston["Misc"].MemSpoofer.Method = 1
+                        end
+                    end
+                }
+            )
+        
+            move:Toggle(
+                {
+                    pointer = "kinginator",
+                    name = "Enable Movement",
+                    default = Kingston["Misc"].Movement.Enabled,
+                    callback = function(state)
+                        Kingston["Misc"].Movement.Enabled = state
+                    end
+                }
+            )
+
+            move:Dropdown(
+                {
+                    Name = "Notification",
+                    Options = {"CFrame", "Humanoid.WS"},
+                    Default = Kingston["Misc"].Movement.Mode,
+                    Pointer = "gduigkd",
+                    callback = function(callback)
+                        if callback == "CFrame" then
+                            Kingston["Misc"].Movement.Mode = "CFrame"
+                        elseif callback == "Humanoid.WS" then
+                            Kingston["Misc"].Movement.Mode = "Humanoid.WS"
+                        end
+                    end
+                }
+            )
+
+            move:Slider(
+                {
+                    Name = "Default Walkspeed",
+                    Minimum = 0,
+                    Maximum = 100,
+                    Default = Kingston["Misc"].Movement["DefaultWS"],
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "abuildington",
+                    callback = function(ankle)
+                        Kingston["Misc"].Movement["DefaultWS"] = ankle
+                    end
+                }
+            )
+        
+        
+            move:Slider(
+                {
+                    Name = "Movement Speed",
+                    Minimum = 0,
+                    Maximum = 3,
+                    Default = Kingston["Misc"].Movement["Speed Value"],
+                    Decimals = .1,
+                    suffix = "",
+                    Pointer = "aeae",
+                    callback = function(ankle)
+                        Kingston["Misc"].Movement["Speed Value"] = ankle
+                    end
+                }
+            )
+        
+            move:Keybind(
+                {
+                    pointer = "movea",
+                    name = "Keybind",
+                    default = Kingston["Misc"].Movement.Keybind,
+                    callback = function(p_state)
+                        Kingston["Misc"].Movement.Keybind = p_state
+                    end
+                }
+            )
+
+            hit:Toggle(
+                {
+                    pointer = "gilsd",
+                    name = "Enable Hit Sound",
+                    default = Kingston["Misc"].HitSound.Enabled,
+                    callback = function(state)
+                        Kingston["Misc"].HitSound.Enabled = state
+                    end
+                }
+            )
+
+            hit:Dropdown(
+                {
+                    Name = "Hit Sound",
+                    Options = {"Bameware", "Skeet", "Bonk", "Lazer Beam", "Windows XP Error", "TF2 Hitsound", "TF2 Critical", "TF2 Bat", "Bow Hit", "Bow", "OSU", "Minecraft Hit", "Steve", "1nn", "Rust", "TF2 Pan", "Neverlose", "Mario"},
+                    Default = Kingston.Misc.HitSound.Sound,
+                    Pointer = "skibidi",
+                    callback = function(callback)
+                        if callback == "Bameware" then
+                            Kingston.Misc.HitSound.Sound = "Bameware"
+                        elseif callback == "Skeet" then
+                            Kingston.Misc.HitSound.Sound = "Skeet"
+                        elseif callback == "Bonk" then
+                            Kingston.Misc.HitSound.Sound = "Bonk"
+                        elseif callback == "Lazer Beam" then
+                            Kingston.Misc.HitSound.Sound = "Lazer Beam"
+                        elseif callback == "Windows XP Error" then
+                            Kingston.Misc.HitSound.Sound = "Windows XP Error"
+                        elseif callback == "TF2 Hitsound" then
+                            Kingston.Misc.HitSound.Sound = "TF2 Hitsound"
+                        elseif callback == "TF2 Critical" then
+                            Kingston.Misc.HitSound.Sound = "TF2 Critical"
+                        elseif callback == "TF2 Bat" then
+                            Kingston.Misc.HitSound.Sound = "TF2 Bat"
+                        elseif callback == "Bow Hit" then
+                            Kingston.Misc.HitSound.Sound = "Bow Hit"
+                        elseif callback == "Bow" then
+                            Kingston.Misc.HitSound.Sound = "Bow"
+                        elseif callback == "OSU" then
+                            Kingston.Misc.HitSound.Sound = "OSU"
+                        elseif callback == "Minecraft Hit" then
+                            Kingston.Misc.HitSound.Sound = "Minecraft Hit"
+                        elseif callback == "Steve" then
+                            Kingston.Misc.HitSound.Sound = "Steve"
+                        elseif callback == "1nn" then
+                            Kingston.Misc.HitSound.Sound = "1nn"
+                        elseif callback == "Rust" then
+                            Kingston.Misc.HitSound.Sound = "Rust"
+                        elseif callback == "TF2 Pan" then
+                            Kingston.Misc.HitSound.Sound = "TF2 Pan"
+                        elseif callback == "Neverlose" then
+                            Kingston.Misc.HitSound.Sound = "Neverlose"
+                        elseif callback == "Mario" then
+                            Kingston.Misc.HitSound.Sound = "Mario"
+                        end
+                    end
+                }
+            )
+
+            hit:Slider(
+                {
+                    Name = "Pitch",
+                    Minimum = 0,
+                    Maximum = 10,
+                    Default = Kingston.Misc.Hitsound.Pitch,
+                    Decimals = .5,
+                    suffix = "",
+                    Pointer = "gools",
+                    callback = function(ankle)
+                        Kingston.Misc.Hitsound.Pitch = ankle
+                    end
+                }
+            )
+
+            hit:Slider(
+                {
+                    Name = "Volume",
+                    Minimum = 0,
+                    Maximum = 10,
+                    Default = Kingston.Misc.Hitsound.Volume,
+                    Decimals = .5,
+                    suffix = "",
+                    Pointer = "beatroot",
+                    callback = function(ankle)
+                        Kingston.Misc.Hitsound.Volume = ankle
+                    end
+                }
+            )
+
+            sky:Toggle(
+                {
+                    pointer = "desha",
+                    name = "Enable Custom Sky Box",
+                    default = Kingston["Misc"].Skybox.Enabled,
+                    callback = function(state)
+                        Kingston["Misc"].Skybox.Enabled = state
+                    end
+                }
+            )
+
+            sky:Dropdown(
+                {
+                    Name = "Type",
+                    Options = {"Pink Sky", "Red Sky", "Nebula", "Dark Night", "Space", "Purple Sky", "Green Sky"},
+                    Default = Kingston["Misc"].Skybox.Type,
+                    Pointer = "golands",
+                    callback = function(callback)
+                        if callback == "Pink Sky" then
+                            Kingston["Misc"].Skybox.Type = "Pink Sky"
+                        elseif callback == "Red Sky" then
+                            Kingston["Misc"].Skybox.Type = "Red Sky"
+                        elseif callback == "Nebula" then
+                            Kingston["Misc"].Skybox.Type = "Nebula"
+                        elseif callback == "Dark Night" then
+                            Kingston["Misc"].Skybox.Type = "Dark Night"
+                        elseif callback == "Space" then
+                            Kingston["Misc"].Skybox.Type = "Space"
+                        elseif callback == "Purple Sky" then
+                            Kingston["Misc"].Skybox.Type = "Purple Sky"
+                        elseif callback == "Green Sky" then
+                            Kingston["Misc"].Skybox.Type = "Green Sky"
+                        end
+                    end
+                }
+            )
+
+            strafe:Toggle(
+                {
+                    pointer = "blahaj",
+                    name = "Enable Target Strafe",
+                    default = Kingston["Misc"]["TargetStrafe"].Enabled,
+                    callback = function(state)
+                        Kingston["Misc"]["TargetStrafe"].Enabled = state
+                    end
+                }
+            )
+
+            strafe:Slider(
+                {
+                    Name = "Height",
+                    Minimum = 0,
+                    Maximum = 15,
+                    Default = Kingston["Misc"]["TargetStrafe"].Height,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "bangcock",
+                    callback = function(ankle)
+                        Kingston["Misc"]["TargetStrafe"].Height = ankle
+                    end
+                }
+            )
+
+            strafe:Slider(
+                {
+                    Name = "Speed",
+                    Minimum = 0,
+                    Maximum = 15,
+                    Default = Kingston["Misc"]["TargetStrafe"].Speed,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "eararas",
+                    callback = function(ankle)
+                        Kingston["Misc"]["TargetStrafe"].Speed = ankle
+                    end
+                }
+            )
+
+            strafe:Slider(
+                {
+                    Name = "Distance",
+                    Minimum = 0,
+                    Maximum = 15,
+                    Default = Kingston["Misc"]["TargetStrafe"].Distance,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "crhina",
+                    callback = function(ankle)
+                        Kingston["Misc"]["TargetStrafe"].Distance = ankle
+                    end
+                }
+            )
+
+            strafe:Keybind(
+                {
+                    pointer = "moshakif",
+                    name = "Keybind",
+                    default = Kingston["Misc"]["TargetStrafe"].Keybind,
+                    callback = function(p_state)
+                        Kingston["Misc"]["TargetStrafe"].Keybind = p_state
+                    end
+                }
+            )
+
+            strafe:Toggle(
+                {
+                    pointer = "peanisoaid",
+                    name = "Target Strafe Visualizer",
+                    default = Kingston["Misc"]["TargetStrafe"].Visualize.Enabled,
+                    callback = function(state)
+                        Kingston["Misc"]["TargetStrafe"].Visualize.Enabled = state
+                    end
+                }
+            )
+
+            strafe:Colorpicker(
+                {
+                    pointer = "hahacolor",
+                    name = "Visualizer Color",
+                    default = Kingston["Misc"]["TargetStrafe"].Visualize.Color,
+                    callback = function(color)
+                        Kingston["Misc"]["TargetStrafe"].Visualize.Color = color
+                    end
+                }
+            )
+
+            strafe:Slider(
+                {
+                    Name = "Visualizer Transparency",
+                    Minimum = 0,
+                    Maximum = 15,
+                    Default = Kingston["Misc"]["TargetStrafe"].Visualize.Transparency,
+                    Decimals = 1,
+                    suffix = "",
+                    Pointer = "crhina",
+                    callback = function(ankle)
+                        Kingston["Misc"]["TargetStrafe"].Visualize.Transparency = ankle
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "butaisfin",
+                    name = "Enable Lighting",
+                    default = Kingston.Misc["Lighting"].Enabled,
+                    callback = function(state)
+                        Kingston.Misc["Lighting"].Enabled = state
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "goldenmilke",
+                    name = "Remove Fog",
+                    default = Kingston.Misc["Lighting"]["Remove Fog"],
+                    callback = function(state)
+                        Kingston.Misc["Lighting"]["Remove Fog"] = state
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "goldenmi",
+                    name = "Remove Textures",
+                    default = Kingston.Misc["Lighting"]["Remove Textures"],
+                    callback = function(state)
+                        Kingston.Misc["Lighting"]["Remove Textures"] = state
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "goldenm",
+                    name = "Remove Grass",
+                    default = Kingston.Misc["Lighting"]["Remove Grass"],
+                    callback = function(state)
+                        Kingston.Misc["Lighting"]["Remove Grass"] = state
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "golden",
+                    name = "Remove Reflections",
+                    default = Kingston.Misc["Lighting"]["Remove Reflections"],
+                    callback = function(state)
+                        Kingston.Misc["Lighting"]["Remove Reflections"] = state
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "golde",
+                    name = "Remove Shadows",
+                    default = Kingston.Misc["Lighting"]["Remove Shadows"],
+                    callback = function(state)
+                        Kingston.Misc["Lighting"]["Remove Shadows"] = state
+                    end
+                }
+            )
+
+            light:Toggle(
+                {
+                    pointer = "gold",
+                    name = "Enable Water Editing",
+                    default = Kingston.Misc["Lighting"]["Water %"][1],
+                    callback = function(state)
+                        Kingston.Misc["Lighting"]["Water %"][1] = state
+                    end
+                }
+            )
+
+            light:Slider(
+                {
+                    Name = "Water Transparency",
+                    Minimum = 0,
+                    Maximum = 100,
+                    Default = Kingston.Misc["Lighting"]["Water %"][2],
+                    Decimals = 1,
+                    suffix = "%",
+                    Pointer = "gol",
+                    callback = function(ankle)
+                        Kingston.Misc["Lighting"]["Water %"][2] = ankle
+                    end
+                }
+            )
+
+            sword:Toggle(
+                {
+                    pointer = "gfosnd",
+                    name = "Enable Sword Grip",
+                    default = Kingston.Misc["Sword Grip"].Enabled,
+                    callback = function(state)
+                        Kingston.Misc["Sword Grip"].Enabled = state
+                    end
+                }
+            )
+
+            sword:Toggle(
+                {
+                    pointer = "gfof",
+                    name = "Remove Sword",
+                    default = Kingston.Misc["Sword Grip"]["Remove Sword"],
+                    callback = function(state)
+                        Kingston.Misc["Sword Grip"]["Remove Sword"] = state
+                    end
+                }
+            )
+
+            sword:Slider(
+                {
+                    Name = "Front Grip",
+                    Minimum = 0,
+                    Maximum = 100,
+                    Default = Kingston.Misc["Sword Grip"].Values.Front,
+                    Decimals = 1,
+                    suffix = "%",
+                    Pointer = "gferfe",
+                    callback = function(ankle)
+                        Kingston.Misc["Sword Grip"].Values.Front = ankle
+                    end
+                }
+            )
+
+            sword:Slider(
+                {
+                    Name = "Side Grip",
+                    Minimum = 0,
+                    Maximum = 100,
+                    Default = Kingston.Misc["Sword Grip"].Values.Side,
+                    Decimals = 1,
+                    suffix = "%",
+                    Pointer = "grfe",
+                    callback = function(ankle)
+                        Kingston.Misc["Sword Grip"].Values.Side = ankle
+                    end
+                }
+            )
+
+            sword:Slider(
+                {
+                    Name = "Height Grip",
+                    Minimum = 0,
+                    Maximum = 100,
+                    Default = Kingston.Misc["Sword Grip"].Values.Height,
+                    Decimals = 1,
+                    suffix = "%",
+                    Pointer = "gfer",
+                    callback = function(ankle)
+                        Kingston.Misc["Sword Grip"].Values.Height = ankle
+                    end
+                }
+            )
+
+            ---
+
+            fly:Toggle(
+                {
+                    pointer = "gfof",
+                    name = "Enable Fly",
+                    default = Kingston.Misc["Sword Grip"]["Remove Sword"],
+                    callback = function(state)
+                        Kingston.Misc["Sword Grip"]["Remove Sword"] = state
+                    end
+                }
+            )
+
+            fly:Slider(
+                {
+                    Name = "Speed",
+                    Minimum = 0,
+                    Maximum = 40,
+                    Default = Kingston.Misc["Fly"].Speed,
+                    Decimals = 1,
+                    suffix = "%",
+                    Pointer = "ggrre",
+                    callback = function(ankle)
+                        Kingston.Misc["Fly"].Speed = ankle
+                    end
+                }
+            )
+
+            fly:Slider(
+                {
+                    Name = "X",
+                    Minimum = 0,
+                    Maximum = 10,
+                    Default = Kingston.Misc["Fly"].Velocity[1],
+                    Decimals = .1,
+                    suffix = "%",
+                    Pointer = "gd",
+                    callback = function(ankle)
+                        Kingston.Misc["Fly"].Velocity[1] = ankle
+                    end
+                }
+            )
+
+            fly:Slider(
+                {
+                    Name = "Y",
+                    Minimum = 0,
+                    Maximum = 10,
+                    Default = Kingston.Misc["Fly"].Velocity[2],
+                    Decimals = .1,
+                    suffix = "%",
+                    Pointer = "brd",
+                    callback = function(ankle)
+                        Kingston.Misc["Fly"].Velocity[2]= ankle
+                    end
+                }
+            )
+
+            fly:Slider(
+                {
+                    Name = "Z",
+                    Minimum = 0,
+                    Maximum = 10,
+                    Default = Kingston.Misc["Fly"].Velocity[3],
+                    Decimals = .1,
+                    suffix = "%",
+                    Pointer = "bnt",
+                    callback = function(ankle)
+                        Kingston.Misc["Fly"].Velocity[3] = ankle
+                    end
+                }
+            )
+
+            fly:Keybind(
+                {
+                    pointer = "bbrrd",
+                    name = "Keybind",
+                    default = Kingston.Misc["Fly"].Keybind,
+                    callback = function(p_state)
+                        Kingston.Misc["Fly"].Keybind = p_state
+                    end
+                }
+            )
+
+            do
+            end
+          
+             
+            local settings_page = window:Page({name = "Settings", side = "Left", size = 110})
+            do
+            local config_section = settings_page:Section({name = "Configuration", side = "Left"})
+                do
+                local current_list = {}
+                    local function update_config_list()
+                        local list = {}
+                        for idx, file in ipairs(listfiles("Linux/configs")) do
+                            local file_name = file:gsub("Linux/configs\\", ""):gsub(".txt", "")
+                            list[#list + 1] = file_name
+                        end
+        
+                        local is_new = #list ~= #current_list
+                        if not is_new then
+                            for idx, file in ipairs(list) do
+                                if file ~= current_list[idx] then
+                                    is_new = true
+                                    break
+                                end
+                            end
+                        end
+        
+                        if is_new then
+                            current_list = list
+                            pointers["settings/configuration/list"]:UpdateList(list, false, true)
+                        end
+                    end
+        
+                    config_section:Listbox({pointer = "settings/configuration/list"})
+                    config_section:Textbox(
+                        {
+                            pointer = "settings/configuration/name",
+                            placeholder = "Config Name",
+                            text = "",
+                            middle = true,
+                            reset_on_focus = false
+                        }
+                    )
+        
+        
+                    config_section:ButtonHolder({Buttons = {{"Create",  function()local config_name = pointers["settings/configuration/name"]:get()
+                        if config_name == "" or isfile("Linux/configs/" .. config_name .. ".txt") then
+                            return
+                        end
+        
+                        writefile("Linux/configs/" .. config_name .. ".txt", "")
+                        update_config_list() end}, {"Delete", function()
+                        local selected_config = pointers["settings/configuration/list"]:get()[1][1]
+                        if selected_config then
+                            delfile("Linux/configs/" .. selected_config .. ".txt")
+                            update_config_list()
+                        end
+                        end}}})
+                    config_section:ButtonHolder({Buttons = {{"Load", function()
+                        local selected_config = pointers["settings/configuration/list"]:get()[1][1]
+                        if selected_config then
+                            window:LoadConfig(readfile("Linux/configs/" .. selected_config .. ".txt"))
+                        end
+                    end}, {"Save", function()
+                        local selected_config = pointers["settings/configuration/list"]:get()[1][1]
+                        if selected_config then
+                            writefile("Linux/configs/" .. selected_config .. ".txt", window:GetConfig())
+                        end
+                    end}}})
+        
+        
+        
+        
+                    m_thread.spawn_loop(3, update_config_list)
+            end
+        
+            local menu_section = settings_page:Section({name = "Menu"})
+            do
+                --
+                local function gs(a)
+                    return game:GetService(a)
+                end
+                --
+                local actionservice = gs("ContextActionService")
+                --
+                menu_section:Keybind(
+                    {
+                        pointer = "settings/menu/bind",
+                        name = "Bind",
+                        default = Enum.KeyCode[Kingston.Options.GUI["Hide Bind"]],
+                        callback = function(p_state)
+                            window.uibind = p_state
+                        end
+                    }
+                )
+                menu_section:Toggle(
+                    {
+                        pointer = "sabcd_aa",
+                        name = "Cursor",
+                        default = true,
+                        callback = function(p_state)
+                            local userInputService = game:GetService("UserInputService")
+                            if p_state == true then
+                                userInputService.MouseIconEnabled = true
+                            else
+                                userInputService.MouseIconEnabled = false
+                            end
+        
+        
+                        end
+                    }
+                )
+                menu_section:Toggle(
+                    {
+                        pointer = "settings/menu/keybind_list",
+                        name = "Keybind List",
+                        callback = function(p_state)
+                            window.keybindslist:Update("Visible", p_state)
+                        end
+                    }
+                )
+        
+                menu_section:Toggle(
+                    {
+                        pointer = "freezemovement",
+                        name = "Disable Movement if UI Open",
+                        callback = function(bool)
+                            if bool and window.isVisible then
+                                actionservice:BindAction(
+                                    "FreezeMovement",
+                                    function()
+                                        return Enum.ContextActionResult.Sink
+                                    end,
+                                    false,
+                                    unpack(Enum.PlayerActions:GetEnumItems())
+                                )
+                            else
+                                actionservice:UnbindAction("FreezeMovement")
+                            end
+                        end
+                    }
+                )
+        
+        
+                menu_section:Button(
+                    {
+                        name = "Unload",
+                        confirmation = true,
+                        callback = function()
+                            window:Unload()
+                        end
+                    }
+                )
+        
+                menu_section:Button(
+                    {
+                        name = "Force Close UI",
+                        confirmation = true,
+                        callback = function()
+                            window:Fade()
+                        end
+                    }
+                )
+        
+            end
+        
+            local other_section = settings_page:Section({name = "Game", side = "Right"})
+            do
+                other_section:Button(
+                    {
+                        name = "Copy JobId",
+                        callback = function()
+                            setclipboard(game.JobId)
+                        end
+                    }
+                )
+                other_section:Button(
+                    {
+                        name = "Copy GameID",
+                        callback = function()
+                            setclipboard(game.GameId)
+                        end
+                    }
+                )
+                other_section:Button(
+                    {
+                        name = "Copy Game Invite",
+                        callback = function()
+                            setclipboard(
+                                "Roblox.GameLauncher.joinGameInstance(" .. game.PlaceId .. ',"' .. game.JobId .. '")'
+                            )
+                        end
+                    }
+                )
+                other_section:Button(
+                    {
+                        name = "Rejoin",
+                        confirmation = true,
+                        callback = function()
+                            m_game:teleport(game.PlaceId, game.JobId)
+                        end
+                    }
+                )
+        
+            local themes_section = settings_page:Section({name = "Themes", side = "Right"})
+            do
+        
+                themes_section:Dropdown(
+                    {
+                        Name = "Theme",
+                        Options = {"Default", "Abyss", "Spotify", "np.rip", "AimWare", "Mint", "Ubuntu", "Bitch Bot", "BubbleGum", "Slime"},
+                        Default = "Default",
+                        Pointer = "themes/xd/",
+                        callback = function(callback)
+                            if callback == "Default" then
+                                library:UpdateColor("Accent", Color3.fromRGB(189, 182, 240))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(30, 30, 30))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(25, 25, 25))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(50, 50, 50))
+                            elseif callback == "Spotify" then
+                                library:UpdateColor("Accent", Color3.fromRGB(103, 212, 91))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(30, 30, 30))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(25, 25, 25))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(46, 46, 46))
+                            elseif callback == "AimWare" then
+                                library:UpdateColor("Accent", Color3.fromRGB(250, 47, 47))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(41, 40, 40))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(38, 38, 38))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(46, 46, 46))
+                            elseif callback == "np.rip" then
+                                library:UpdateColor("Accent", Color3.fromRGB(242, 150, 92))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(22, 12, 46))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(17, 8, 31))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(46, 46, 46))
+                            elseif callback == "Abyss" then
+                                library:UpdateColor("Accent", Color3.fromRGB(81, 72, 115))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(41, 41, 41))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(31, 30, 30))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(50, 50, 50))
+                            elseif callback == "Mint" then
+                                library:UpdateColor("Accent", Color3.fromRGB(0, 255, 139))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(20, 20, 20))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(20, 20, 20))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(50, 50, 50))
+                            elseif callback == "Ubuntu" then
+                                library:UpdateColor("Accent", Color3.fromRGB(226, 88, 30))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(62,62,62))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(50, 50, 50))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(50, 50, 50))
+                            elseif callback == "Bitch Bot" then
+                                library:UpdateColor("Accent", Color3.fromRGB(126,72,163))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(62,62,62))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(50, 50, 50))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(50, 50, 50))
+                            elseif callback == "BubbleGum" then
+                              library:UpdateColor("Accent", Color3.fromRGB(169, 83, 245))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(22, 12, 46))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(17, 8, 31))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(46, 46, 46))
+                            elseif callback == "Slime" then
+                                
+                                   library:UpdateColor("Accent", Color3.fromRGB(64, 247, 141))
+                                library:UpdateColor("lightcontrast", Color3.fromRGB(22, 12, 46))
+                                library:UpdateColor("darkcontrast", Color3.fromRGB(17, 8, 31))
+                                library:UpdateColor("outline", Color3.fromRGB(0, 0, 0))
+                                library:UpdateColor("inline", Color3.fromRGB(46, 46, 46))
+                            end
+                        end
+                    }
+                )
+        
+                themes_section:Dropdown(
+                    {
+                        Name = "Accent Effects",
+                        Options = {"Rainbow", "Fade", "Disguard Fade", "Disguard Rainbow"},
+                        Default = "None",
+                        Pointer = "themes/xd/",
+                        callback = function(callback)
+                            if callback == "Rainbow" then
+                                if callback then
+        
+                                    ching =
+                                        game:GetService("RunService").Heartbeat:Connect(
+                                            function()
+                                                chings:Disconnect()
+                                                library:UpdateColor("Accent", Color3.fromHSV(tick() % 5 / 5, 1, 1))
+                                            end
+                                        )
+                                else
+                                    if ching then
+                                        ching:Disconnect()
+                                    end
+                                end
+        
+                            elseif callback == "Disguard Rainbow" then
+                                ching:Disconnect()
+        
+        
+                            elseif callback == "Disguard Fade" then
+        
+                                chings:Disconnect()
+        
+                            elseif callback == "Fade" then
+                                if callback then
+        
+                                    chings =
+                                        game:GetService("RunService").Heartbeat:Connect(
+                                            function()
+                                                ching:Disconnect()
+                                                local r = (math.sin(workspace.DistributedGameTime/2)/2)+0.5
+                                                local g = (math.sin(workspace.DistributedGameTime)/2)+0.5
+                                                local b = (math.sin(workspace.DistributedGameTime*1.5)/2)+0.5
+                                                local color = Color3.new(r, g, b)
+                                                library:UpdateColor("Accent", color)
+                                            end
+                                        )
+                                else
+                                    if chings then
+                                        chings:Disconnect()
+                                    end
+                                end
+        
+                            end
+                        end
+                    }
+                )
+                themes_section:Slider(
+                    {
+                        Name = "Switch Speed",
+                        Minimum = 0,
+                        Maximum = 10,
+                        Default = 1,
+                        Decimals = .1,
+                        suffix = "",
+                        Pointer = "reload delay",
+                        callback = function(a)
+                        end
+                    }
+                )
+        
+                themes_section:Colorpicker(
+                    {
+                        pointer = "themes/menu/accent",
+                        name = "Accent",
+                        default = Color3.fromRGB(100, 61, 200),
+                        callback = function(p_state)
+                            library:UpdateColor("Accent", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Light Contrast",
+                        default = Color3.fromRGB(30, 30, 30),
+                        callback = function(p_state)
+                            library:UpdateColor("lightcontrast", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Dark Constrast",
+                        default = Color3.fromRGB(25, 25, 25),
+                        callback = function(p_state)
+                            library:UpdateColor("darkcontrast", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Outline",
+                        default = Color3.fromRGB(0, 0, 0),
+                        callback = function(p_state)
+                            library:UpdateColor("outline", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Inline",
+                        default = Color3.fromRGB(50, 50, 50),
+                        callback = function(p_state)
+                            library:UpdateColor("inline", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Text Color",
+                        default = Color3.fromRGB(255, 255, 255),
+                        callback = function(p_state)
+                            library:UpdateColor("textcolor", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Text Border",
+                        default = Color3.fromRGB(0, 0, 0),
+                        callback = function(p_state)
+                            library:UpdateColor("textborder", p_state)
+                        end
+                    }
+                )
+                themes_section:Colorpicker(
+                    {
+                        pointer = "settings/menu/accent",
+                        name = "Cursor Outline",
+                        default = Color3.fromRGB(10, 10, 10),
+                        callback = function(p_state)
+                            library:UpdateColor("cursoroutline", p_state)
+                        end
+                    }
+                )
+            end
+        end
+        window.uibind = Enum.KeyCode[Kingston.GUI["Hide Bind"]]
+        window:Initialize()
+        end
+        end
+    elseif Kingston["GUI"]["Type"] == "Mercury" then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Jimenth/Mercury/main/UISource"))()
+
+
+local GUI = Mercury:Create{
+    Name = "Kingston [" .. gameId .. "] | " .. playerName .. " | Version " .. Version " | Ping " .. Ping .. " | FPS " .. frames .. " | ",
+    Size = Kingston.GUI.Size,
+    Theme = Mercury.Themes.Dark,
+    Link = "https://github.com/deeeity/mercury-lib"
+}
+
+local Par = GUI:Tab{
+	Name = "Parrying",
+	Icon = "rbxassetid://7485051733"
+}
+
+local Directional = GUI:Tab{
+	Name = "Directional",
+	Icon = "rbxassetid://12338898430"
+}
+
+local Dist = GUI:Tab{
+	Name = "Visualizers",
+	Icon = "rbxassetid://6523858422"
+}
+
+local Opt = GUI:Tab{
+	Name = "Options",
+	Icon = "rbxassetid://7059346386"
+}
+
+local Dev = GUI:Tab{
+	Name = "Device Spoofer",
+	Icon = "rbxassetid://6264845490"
+}
+
+local Abl = GUI:Tab{
+	Name = "Ability Spammer",
+	Icon = "rbxassetid://11322089619"
+}
+
+local Mod = GUI:Tab{
+	Name = "Mod Detection",
+	Icon = "rbxassetid://10885640695"
+}
+
+local Mem = GUI:Tab{
+	Name = "Memory Spoofer",
+	Icon = "rbxassetid://12338898430"
+}
+
+local Hit = GUI:Tab{
+	Name = "Hit Sound",
+	Icon = "rbxassetid://6011908712"
+}
+
+local Move = GUI:Tab{
+	Name = "Movement",
+	Icon = "rbxassetid://9525535526"
+}
+
+local Sky = GUI:Tab{
+	Name = "Sky Box",
+	Icon = "rbxassetid://3057073095"
+}
+
+local Targ = GUI:Tab{
+	Name = "Target Strafe",
+	Icon = "rbxassetid://10885656012"
+}
+
+local Light = GUI:Tab{
+	Name = "Lighting",
+	Icon = ""
+}
+
+local Sword = GUI:Tab{
+	Name = "Sword Grip",
+	Icon = ""
+}
+
+local Fly = GUI:Tab{
+	Name = "Flight",
+	Icon = "rbxassetid://7059328069"
+}
+Par:Toggle{
+	Name = "Enable Auto Parry",
+	StartingState = Kingston.Parrying["Auto Parry"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"].Enabled = state
+    end
+}
+
+Par:Toggle{
+	Name = "Print Auto Parry Information",
+	StartingState = Kingston.Parrying["Auto Parry"]["Print Information"],
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"]["Print Information"] = state
+    end
+}
+
+    Par:Toggle{
+        Name = "Enable Spam Parry",
+        StartingState = Kingston.Parrying["Spamming"].Enabled,
+        Description = nil,
+        Callback = function(state) 
+            Kingston.Parrying["Spamming"].Enabled = state
+        end
+}
+
+Par:Toggle{
+	Name = "Spam Parry Notification",
+	StartingState = Kingston.Parrying["Auto Parry"].Spamming.Notify,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"].Spamming.Notify = state
+    end
+}
+
+Par:Slider{
+	Name = "Spam Parry Target Distance",
+	Default = Kingston.Parrying["Spamming"].Distance[1],
+	Min = 0,
+	Max = 15,
+	Callback = function(state) 
+        Kingston.Parrying["Spamming"].Distance[1] = state
+    end
+}
+
+Par:Slider{
+	Name = "Spam Parry Ball Distance",
+	Default = Kingston.Parrying["Spamming"].Distance[2],
+	Min = 0,
+	Max = 15,
+	Callback = function(state) 
+        Kingston.Parrying["Spamming"].Distance[2] = state
+    end
+}
+
+Directional:Toggle{
+	Name = "Face Ball",
+	StartingState = Kingston.Parrying["Auto Parry"]["Face Ball"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"]["Face Ball"].Enabled = state
+    end
+}
+
+Directional:Keybind{
+	Name = "Face Ball Keybind",
+	Keybind = Kingston.Parrying["Auto Parry"]["Face Ball"].Keybind,
+	Description = nil,
+    Callback = function(key)
+        Kingston.Parrying["Auto Parry"]["Face Ball"].Keybind = key
+    end
+}
+
+Directional:Toggle{
+	Name = "Face Target",
+	StartingState = Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"].Enabled = state
+    end
+}
+
+Directional:Toggle{
+	Name = "Face Target",
+	StartingState = Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"].Enabled = state
+    end
+}
+
+Directional:Toggle{
+	Name = "Require Distance",
+	StartingState = Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"]["Require Distance"],
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"]["Require Distance"] = state
+    end
+}
+
+Directional:Keybind{
+	Name = "Face Target Keybind",
+	Keybind = Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"].Keybind,
+	Description = nil,
+    Callback = function(key)
+        Kingston.Parrying["Auto Parry"]["Spamming"]["Face Target"].Keybind = key
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Dist:Toggle{
+	Name = "Enable Auto Parry Visualizer",
+	StartingState = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Auto Parry"]["Visualize Distance"].Enabled = state
+    end
+}
+
+Dist:Slider{
+	Name = "Auto Parry Visualizer Transparency",
+	Default = Kingston.Parrying["Auto Parry"]["Visualize Distance"].Transparency,
+	Min = 0,
+	Max = 1,
+	Callback = function(transparency) 
+        Kingston.Parrying["Auto Parry"]["Visualize Distance"].Transparency = transparency
+    end
+}
+
+Dist:Toggle{
+	Name = "Enable Spam Parry Visualizer",
+	StartingState = Kingston.Parrying["Spamming"]["Visualize Distance"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Parrying["Spamming"]["Visualize Distance"].Enabled = state
+    end
+}
+
+Dist:Dropdown{
+	Name = "Mode",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Display Target", 1},
+		{"Display Ball", 1},
+		{"Display Both", 1}
+	},
+	Callback = function(item)
+        Kingston.Parrying["Spamming"]["Visualize Distance"].Mode = item
+    end
+}
+
+Dist:Slider{
+	Name = "Spam Parry Target Visualizer Transparency",
+	Default = Kingston.Parrying["Spamming"]["Visualize Distance"]["Display Target"].Transparency,
+	Min = 0,
+	Max = 1,
+	Callback = function(transparency) 
+        Kingston.Parrying["Spamming"]["Visualize Distance"]["Display Target"].Transparency = transparency
+    end
+}
+
+Dist:Slider{
+	Name = "Spam Parry Ball Visualizer Transparency",
+	Default = Kingston.Parrying["Spamming"]["Visualize Distance"]["Display Ball"].Transparency,
+	Min = 0,
+	Max = 1,
+	Callback = function(transparency) 
+        Kingston.Parrying["Spamming"]["Visualize Distance"]["Display Ball"].Transparency = transparency
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Opt:Toggle{
+	Name = "Disable Errors",
+	StartingState = Kingston.Options["Anti Error"],
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Options["Anti Error"] = state
+    end
+}
+
+Opt:Toggle{
+	Name = "Bypass Idle Kick",
+	StartingState = Kingston.Options["Bypass Idle Kick"],
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Options["Bypass Idle Kick"] = state
+    end
+}
+
+Opt:Toggle{
+	Name = "Unlock FPS",
+	StartingState = Kingston.Options["Unlock FPS"],
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Options["Unlock FPS"] = state
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Dev:Toggle{
+	Name = "Enable Device Spoofer",
+	StartingState = Kingston.Options["Spoof Device"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston.Options["Spoof Device"].Enabled = state
+    end
+}
+
+Dev:Dropdown{
+	Name = "Device",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Android", 1},
+	},
+	Callback = function(item)
+        Kingston.Options["Spoof Device"].Device = item
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Abl:Toggle{
+	Name = "Enable Ability Spammer",
+	StartingState = Kingston["Ability Spammer"].Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Ability Spammer"].Enabled = state
+    end
+}
+
+Abl:Dropdown{
+	Name = "Ability",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Freeze", 1},
+        {"Pulse", 2},
+        {"Telekinesis", 3},
+        {"Invisibility", 4},
+        {"Forcefield", 5},
+	},
+	Callback = function(item)
+        Kingston["Ability Spammer"].Ability = item
+    end
+}
+
+Abl:Keybind{
+	Name = "Keybind",
+	Keybind = Kingston["Ability Spammer"].Keybind,
+	Description = nil,
+    Callback = function(key)
+        Kingston["Ability Spammer"].Keybind = key
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Mod:Toggle{
+	Name = "Enable Mod Detection",
+	StartingState = Kingston["Misc"].Mod.Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"].Mod.Enabled = state
+    end
+}
+
+Abl:Dropdown{
+	Name = "Type",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Kick", 1},
+        {"Notify", 2}
+	},
+	Callback = function(mefod)
+        Kingston["Misc"].Mod.OnJoin = mefod
+    end
+}
+
+Mod:Textbox{
+	Name = "Notification",
+	Callback = function(text) 
+        Kingston["Misc"].Mod.Notification = text
+    end
+}
+
+Mod:Slider{
+	Name = "Delay",
+	Default = Kingston["Misc"].Mod.Delay,
+	Min = 1,
+	Max = 50,
+	Callback = function(del) 
+        Kingston["Misc"].Mod.Delay = del
+    end
+}
+
+Mod:Slider{
+	Name = "Rank",
+	Default = Kingston["Misc"].Mod.Rank,
+	Min = 1,
+	Max = 255,
+	Callback = function(rank) 
+        Kingston["Misc"].Mod.Rank = rank
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Mem:Toggle{
+	Name = "Enable Memory Spoofer",
+	StartingState = Kingston["Misc"].MemSpoofer.Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"].MemSpoofer.Enabled = state
+    end
+}
+
+Mem:Dropdown{
+	Name = "Method",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"0", 1},
+        {"1", 2}
+	},
+	Callback = function(mefod)
+        Kingston["Misc"].MemSpoofer.Method = mefod
+    end
+}
+
+Mem:Slider{
+	Name = "Delay",
+	Default = Kingston["Misc"].MemSpoofer.Delay,
+	Min = 1,
+	Max = 255,
+	Callback = function(rank) 
+        Kingston["Misc"].MemSpoofer.Delay = rank
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Move:Toggle{
+	Name = "Enable Movement",
+	StartingState = Kingston["Misc"].Movement.Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"].Movement.Enabled = state
+    end
+}
+
+Hit:Dropdown{
+	Name = "Movement Mode",
+	StartingText = Kingston["Misc"].Movement["Mode"],
+	Description = nil,
+	Items = {
+        {"CFrame", 1},
+		{"Humanoid.WS", 2}
+	},
+	Callback = function(mefod)
+        Kingston["Misc"].Movement["Mode"] = mefod
+    end
+}
+
+Move:Slider{
+	Name = "Speed Value",
+	Default = Kingston["Misc"].Movement["Speed Value"],
+	Min = 0,
+	Max = 5,
+	Callback = function(rank) 
+        Kingston["Misc"].Movement["Speed Value"] = rank
+    end
+}
+
+Move:Slider{
+	Name = "Default Walkspeed",
+	Default = Kingston["Misc"].Movement["DefaultWS"],
+	Min = 0,
+	Max = 100,
+	Callback = function(rank) 
+        Kingston["Misc"].Movement["DefaultWS"] = rank
+    end
+}
+
+Move:Keybind{
+	Name = "Speed Keybind",
+	Keybind =  Kingston["Misc"].Movement.Keybind,
+	Description = nil,
+    Callback = function(key)
+		Kingston["Misc"].Movement.Keybind = key
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Hit:Toggle{
+	Name = "Enable Parry Sound",
+	StartingState = Kingston["Misc"].HitSound.Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"].HitSound.Enabled = state
+    end
+}
+
+Hit:Dropdown{
+	Name = "Parry Sound",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Bameware", 1},
+        {"Skeet", 2},
+		{"Bonk", 3},
+		{"Lazer Beam", 4},
+		{"Windows XP Error", 5},
+		{"TF2 Hitsound", 6},
+		{"TF2 Critical", 7},
+		{"TF2 Bat", 8},
+		{"Bow Hit", 9},
+		{"Bow", 10},
+		{"OSU", 11},
+		{"Minecraft Hit", 12},
+		{"Steve", 13},
+		{"1nn", 14},
+		{"Rust", 15},
+		{"TF2 Pan", 16},
+		{"Neverlose", 17},
+		{"Mario", 18}
+	},
+	Callback = function(mefod)
+        Kingston["Misc"].HitSound.Sound = mefod
+    end
+}
+
+Hit:Slider{
+	Name = "Sound Pitch",
+	Default = Kingston["Misc"].HitSound.Pitch,
+	Min = -10,
+	Max = 10,
+	Callback = function(rank) 
+		 Kingston["Misc"].HitSound.Pitch = rank
+    end
+}
+
+Hit:Slider{
+	Name = "Sound Volume",
+	Default = Kingston["Misc"].HitSound.Volume,
+	Min = 0,
+	Max = 5,
+	Callback = function(rank) 
+		 Kingston["Misc"].HitSound.Volume = rank
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Sky:Toggle{
+	Name = "Enable Sky Box",
+	StartingState = Kingston["Misc"].Skybox.Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"].Skybox.Enabled = state
+    end
+}
+
+Sky:Dropdown{
+	Name = "Parry Sound",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Pink Sky", 1},
+        {"Red Sky", 2},
+		{"Nebula", 3},
+		{"Dark Night", 4},
+		{"Space", 5},
+		{"Purple Sky", 6},
+		{"Green Sky", 7}
+	},
+	Callback = function(mefod)
+        Kingston["Misc"].Skybox.Type = mefod
+    end
+}
+
+---------------]]
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------]]
+
+Targ:Toggle{
+	Name = "Enable Target Strafe",
+	StartingState = Kingston["Misc"]["TargetStrafe"]["Enabled"],
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"]["TargetStrafe"]["Enabled"] = state
+    end
+}
+
+Targ:Slider{
+	Name = "Speed",
+	Default = Kingston["Misc"]["TargetStrafe"].Speed,
+	Min = 0,
+	Max = 10,
+	Callback = function(rank) 
+		Kingston["Misc"]["TargetStrafe"].Speed = rank
+    end
+}
+
+Targ:Slider{
+	Name = "Distance",
+	Default = Kingston["Misc"]["TargetStrafe"].Distance,
+	Min = 0,
+	Max = 10,
+	Callback = function(rank) 
+		Kingston["Misc"]["TargetStrafe"].Distance = rank
+    end
+}
+
+Targ:Slider{
+	Name = "Height",
+	Default = Kingston["Misc"]["TargetStrafe"].Height,
+	Min = 0,
+	Max = 10,
+	Callback = function(rank) 
+		Kingston["Misc"]["TargetStrafe"].Height = rank
+    end
+}
+
+Targ:Toggle{
+	Name = "Enable Visualizer",
+	StartingState = Kingston["Misc"]["TargetStrafe"].Visualize.Enabled,
+	Description = nil,
+	Callback = function(state) 
+        Kingston["Misc"]["TargetStrafe"].Visualize.Enabled = state
+    end
+}
+
+Targ:Slider{
+	Name = "Visualizer Transparency",
+	Default = Kingston["Misc"]["TargetStrafe"].Visualize.Transparency,
+	Min = 0,
+	Max = 1,
+	Callback = function(transparency) 
+        Kingston["Misc"]["TargetStrafe"].Visualize.Transparency = transparency
+    end
+}
+
+-- Toggle elements
+Light:Toggle{
+    Name = "Enable Lighting",
+    StartingState = Kingston.Misc["Lighting"].Enabled,
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"].Enabled = state
+    end
+}
+
+Light:Toggle{
+    Name = "Remove Fog",
+    StartingState = Kingston.Misc["Lighting"]["Remove Fog"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Remove Fog"] = state
+    end
+}
+
+Light:Toggle{
+    Name = "Remove Textures",
+    StartingState = Kingston.Misc["Lighting"]["Remove Textures"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Remove Textures"] = state
+    end
+}
+
+Light:Toggle{
+    Name = "Remove Grass",
+    StartingState = Kingston.Misc["Lighting"]["Remove Grass"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Remove Grass"] = state
+    end
+}
+
+Light:Toggle{
+    Name = "Remove Reflections",
+    StartingState = Kingston.Misc["Lighting"]["Remove Reflections"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Remove Reflections"] = state
+    end
+}
+
+Light:Toggle{
+    Name = "Remove Shadows",
+    StartingState = Kingston.Misc["Lighting"]["Remove Shadows"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Remove Shadows"] = state
+    end
+}
+
+Light:Toggle{
+    Name = "Enable Water Editing",
+    StartingState = Kingston.Misc["Lighting"]["Water %"][1],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Water %"][1] = state
+    end
+}
+
+-- Slider elements
+Light:Slider{
+    Name = "Water Transparency",
+    Default = Kingston.Misc["Lighting"]["Water %"][2],
+    Min = 0,
+    Max = 100,
+    Callback = function(state)
+        Kingston.Misc["Lighting"]["Water %"][2] = state
+    end
+}
+
+-- Sword Grip
+
+Sword:Toggle{
+    Name = "Enable Sword Grip",
+    StartingState = Kingston.Misc["Sword Grip"].Enabled,
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Sword Grip"].Enabled = state
+    end
+}
+
+Sword:Toggle{
+    Name = "Remove Sword",
+    StartingState = Kingston.Misc["Sword Grip"]["Remove Sword"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Sword Grip"]["Remove Sword"] = state
+    end
+}
+
+Sword:Slider{
+    Name = "Front Grip",
+    Default = Kingston.Misc["Sword Grip"].Values.Front,
+    Min = 0,
+    Max = 100,
+    Callback = function(ankle)
+        Kingston.Misc["Sword Grip"].Values.Front = ankle
+    end
+}
+
+Sword:Slider{
+    Name = "Side Grip",
+    Default = Kingston.Misc["Sword Grip"].Values.Side,
+    Min = 0,
+    Max = 100,
+    Callback = function(ankle)
+        Kingston.Misc["Sword Grip"].Values.Side = ankle
+    end
+}
+
+Sword:Slider{
+    Name = "Height Grip",
+    Default = Kingston.Misc["Sword Grip"].Values.Height,
+    Min = 0,
+    Max = 100,
+    Callback = function(ankle)
+        Kingston.Misc["Sword Grip"].Values.Height = ankle
+    end
+}
+
+---
+
+-- Fly
+
+Fly:Toggle{
+    Name = "Enable Fly",
+    StartingState = Kingston.Misc["Sword Grip"]["Remove Sword"],
+    Description = nil,
+    Callback = function(state)
+        Kingston.Misc["Sword Grip"]["Remove Sword"] = state
+    end
+}
+
+Fly:Slider{
+    Name = "Speed",
+    Default = Kingston.Misc["Fly"].Speed,
+    Min = 0,
+    Max = 40,
+    Callback = function(ankle)
+        Kingston.Misc["Fly"].Speed = ankle
+    end
+}
+
+Fly:Slider{
+    Name = "X",
+    Default = Kingston.Misc["Fly"].Velocity[1],
+    Min = 0,
+    Max = 10,
+    Callback = function(ankle)
+        Kingston.Misc["Fly"].Velocity[1] = ankle
+    end
+}
+
+Fly:Slider{
+    Name = "Y",
+    Default = Kingston.Misc["Fly"].Velocity[2],
+    Min = 0,
+    Max = 10,
+    Callback = function(ankle)
+        Kingston.Misc["Fly"].Velocity[2] = ankle
+    end
+}
+
+Fly:Slider{
+    Name = "Z",
+    Default = Kingston.Misc["Fly"].Velocity[3],
+    Min = 0,
+    Max = 10,
+    Callback = function(ankle)
+        Kingston.Misc["Fly"].Velocity[3] = ankle
+    end
+}
+
+Fly:Keybind{
+    Name = "Keybind",
+    Keybind = Kingston.Misc["Fly"].Keybind,
+    Description = nil,
+    Callback = function(key)
+        Kingston.Misc["Fly"].Keybind = key
+    end
+}
+    end
