@@ -1,5 +1,4 @@
-if Kingston.Parrying["Auto Parry"].Enabled then
-    getgenv().Signal = Signal or {}
+getgenv().Signal = Signal or {}
 
     -- Function to get player points
     function PlayerPoints()
@@ -417,4 +416,3 @@ if Kingston.Parrying["Auto Parry"].Enabled then
 
     -- Call the initialization function
     Init()
-end
