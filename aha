@@ -156,8 +156,6 @@ local Kingston = {
     }
 }
 
-NotifyLib.prompt('Kington | ', 'Beta Build Loaded | V ' .. Version .. ' |', 2)
-
 local sus = false -- // Used for Ability Spammer 
 local Version = "1.13.9"
 local CoreGui = game:GetService("CoreGui")
@@ -187,6 +185,8 @@ local playerName = game.Players.Localplayer.Name
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
 local Camera = game.Workspace.CurrentCamera
 local Mouse = Localplayer:GetMouse()
+
+NotifyLib.prompt('Kington | ', 'Beta Build Loaded | V ' .. Version .. ' |', 2)
 
 
 local RadiusEnabled = Kingston["Force Target"]["Radius"]["Use Radius"]
