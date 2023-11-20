@@ -27,20 +27,20 @@ local Kingston = {
     },
     ["Parrying"] = {
         ["Auto Parry"] = {
-            ["Enabled"] = false,
+            ["Enabled"] = true,
             ["Print Information"] = false,
             ["Face Ball"] = {
                 ["Enabled"] = false,
                 ["Keybind"] = "K"
             },
             ["Visualize Distance"] = { -- // Uses A "Sphere" / "Ball" Part
-                ["Enabled"] = false,
+                ["Enabled"] = true,
                 ["Color"] = Color3.new(1 , 0 , 0), -- // Red , Green , Blue
                 ["Transparency"] = 0 -- // 0 . Completely Visible | 1 . Invisible
             }
         },
         ["Spamming"] = {
-            ["Enabled"] = false,
+            ["Enabled"] = true,
             ["Distance"] = {15, 2}, -- // 1st Value = Dist Between You + Target, 2nd Value = Dist Between You + Ball
             ["Notify"] = false,
             ["Face Target"] = { -- // Disables when you die
@@ -49,7 +49,7 @@ local Kingston = {
                 ["Keybind"] = "P"
             },
             ["Visualize Distance"] = {
-                ["Enabled"] = false,
+                ["Enabled"] = true,
                 ["Mode"] = "Display Target", -- // "Display Target", "Display Ball", "Display Both"
                 ["Target Display"] = {
                     ["Color"] = Color3.new(1 , 0 , 0),
@@ -63,7 +63,7 @@ local Kingston = {
         }
     },
     ["Force Target"] = { -- // Beta
-        ["Enabled"] = false,
+        ["Enabled"] = true,
         ["Keybind"] = "L",
         ["Radius"] = {
             ["Use Radius"] = false,
@@ -77,7 +77,7 @@ local Kingston = {
         }
     },
     ["Ability Spammer"] = { -- // Spams The Selected Ability
-        ["Enabled"] = false,
+        ["Enabled"] = true,
         ["Ability"] = "Freeze",
         ["Keybind"] = "L"
     },
