@@ -1,6 +1,6 @@
 local Kingston = {
     ["GUI"] = {
-        ["Type"] = "Octernal", -- // Octernal, Mercury
+        ["Type"] = "Mercury", -- // Octernal, Mercury
         ["Hide Bind"] = "K",
         ["Size"] = Vector2.new(800, 800)
         -- // Octernal is a drawing GUI that does not support Mobile.
